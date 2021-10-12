@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class PlayCheckersGame extends JFrame {
 
-    private PlayCheckersGame(String title)
+    public PlayCheckersGame(String title)
     {
         super(title);
 
