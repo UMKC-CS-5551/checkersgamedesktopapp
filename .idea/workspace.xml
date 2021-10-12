@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d4aa976-78e9-4743-ad6c-54566d116b21" name="Default Changelist" comment="Adjusting the code" />
+    <list default="true" id="6d4aa976-78e9-4743-ad6c-54566d116b21" name="Default Changelist" comment="Adjusting the code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +55,7 @@
       </method>
     </configuration>
     <configuration name="PlayCheckersGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../programFiles/java/jdk1.8.0_202" />
+      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../programFiles/java/jdk1.8.0_202/jre" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.client.PlayCheckersGame" />
       <module name="checkers-game-desktop-app" />
@@ -67,6 +69,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="Application.PlayCheckersGame" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.PlayCheckersGame" />
@@ -90,6 +96,7 @@
       <workItem from="1633978252254" duration="907000" />
       <workItem from="1633980202028" duration="747000" />
       <workItem from="1634053897637" duration="363000" />
+      <workItem from="1634074111293" duration="186000" />
     </task>
     <servers />
   </component>
