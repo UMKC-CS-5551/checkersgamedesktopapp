@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d4aa976-78e9-4743-ad6c-54566d116b21" name="Default Changelist" comment="Adjusting the code">
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/PlayCheckersGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/PlayCheckersGame.java" afterDir="false" />
-    </list>
+    <list default="true" id="6d4aa976-78e9-4743-ad6c-54566d116b21" name="Default Changelist" comment="Adjusting the code" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +89,7 @@
       <workItem from="1633927492093" duration="2510000" />
       <workItem from="1633978252254" duration="907000" />
       <workItem from="1633980202028" duration="747000" />
-      <workItem from="1634053897637" duration="90000" />
+      <workItem from="1634053897637" duration="363000" />
     </task>
     <servers />
   </component>
