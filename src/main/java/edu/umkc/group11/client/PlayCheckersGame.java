@@ -15,8 +15,8 @@ public class PlayCheckersGame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel content = new JPanel(new GridBagLayout());
         content.setBorder(new EmptyBorder(20, 20, 20, 20));
+        content.add(new CheckerBoardUI());
         setContentPane(content);
-        getContentPane().add(new CheckerBoardUI());
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
