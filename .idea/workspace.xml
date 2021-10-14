@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6d4aa976-78e9-4743-ad6c-54566d116b21" name="Default Changelist" comment="Adjusting the code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/PlayCheckersGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/PlayCheckersGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/AppTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +25,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
@@ -47,7 +45,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PlayCheckersGame">
+  <component name="RunManager" selected="Application.WelcomeScreen">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.App" />
       <module name="checkersgamedesktopapp" />
@@ -76,12 +74,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WelcomeScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.client.WelcomeScreen" />
+      <module name="checkers-game-desktop-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.umkc.group11.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.App" />
       <item itemvalue="Application.PlayCheckersGame" />
+      <item itemvalue="Application.WelcomeScreen" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WelcomeScreen" />
         <item itemvalue="Application.PlayCheckersGame" />
         <item itemvalue="Application.App" />
       </list>
@@ -103,7 +116,7 @@
       <workItem from="1633978252254" duration="907000" />
       <workItem from="1633980202028" duration="747000" />
       <workItem from="1634053897637" duration="363000" />
-      <workItem from="1634074111293" duration="1397000" />
+      <workItem from="1634074111293" duration="3602000" />
     </task>
     <servers />
   </component>
