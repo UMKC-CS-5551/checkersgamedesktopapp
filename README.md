@@ -1,6 +1,16 @@
 ## Welcome to Checkers Game Application
 
-This application is being developed using Java Swing.
+#  CS5551 Project
+# Project Team Members:
+                               Madhuri Sarode
+                               Debsankar Mukhopadhyay
+                               Mounika chinna bandhyala
+                               Neeharika jasti
+                               Ajay reddy Byreddy
+
+
+# Application Details:
+This application is being developed using Java Swing. We are using JUnit to test the application.
 
 The entry-point to execute the code is in the edu.umkc.group11.client.PlayCheckersGame class.
 
