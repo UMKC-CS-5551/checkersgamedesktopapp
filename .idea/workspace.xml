@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6d4aa976-78e9-4743-ad6c-54566d116b21" name="Default Changelist" comment="Adjusting the code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +31,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\appDev\chekers\TEST2\TEST3\checkersgamedesktopapp\src\main\java\edu\umkc\group11\client" />
       <recent name="C:\appDev\chekers\TEST2\TEST3\checkersgamedesktopapp" />
     </key>
   </component>
@@ -45,7 +47,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.WelcomeScreen">
+  <component name="RunManager" selected="Application.PlayCheckersGame">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.App" />
       <module name="checkersgamedesktopapp" />
@@ -94,8 +96,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.WelcomeScreen" />
         <item itemvalue="Application.PlayCheckersGame" />
+        <item itemvalue="Application.WelcomeScreen" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -117,6 +119,7 @@
       <workItem from="1633980202028" duration="747000" />
       <workItem from="1634053897637" duration="363000" />
       <workItem from="1634074111293" duration="3602000" />
+      <workItem from="1634176309368" duration="1107000" />
     </task>
     <servers />
   </component>

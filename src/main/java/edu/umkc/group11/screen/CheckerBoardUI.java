@@ -13,6 +13,7 @@ public class CheckerBoardUI extends JPanel {
     @Override
     protected void paintComponent(Graphics g)
     {
+        super.paintComponent(g);
         int row;   // Row number, from 0 to 7
         int col;   // Column number, from 0 to 7
         int x,y;   // Top-left corner of square
