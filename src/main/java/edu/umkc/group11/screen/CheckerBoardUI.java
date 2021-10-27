@@ -1,36 +1,97 @@
 package edu.umkc.group11.screen;
 
+
+import edu.umkc.group11.model.BoardPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class CheckerBoardUI extends JPanel {
-
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(900, 900);
+public class CheckerBoardUI extends JPanel  {
+    private BoardPanel[] blackButtons;
+    private BoardPanel[] whiteButtons;
+    private JPanel panel;
+    public CheckerBoardUI()
+    {
+        createBoard();
     }
 
-    @Override
-    protected void paintComponent(Graphics g)
+    public void createBoard()
     {
-        super.paintComponent(g);
-        int row;   // Row number, from 0 to 7
-        int col;   // Column number, from 0 to 7
-        int x,y;   // Top-left corner of square
 
-        for ( row = 0;  row < 8;  row++ ) {
-            for ( col = 0;  col < 8;  col++) {
-                x = col * 100;
-                y = row * 100;
-                if ( (row % 2) == (col % 2) )
-                {
-                    g.setColor(Color.white);
+        blackButtons = new BoardPanel[4 * 8];
+        whiteButtons = new BoardPanel[4 * 8];
+
+        for(int i = 0; i < blackButtons.length; i++)
+        {
+            blackButtons[i] = new BoardPanel(this, i);
+            blackButtons[i].setBackground(Color.GREEN);
+        }
+        for(int i = 0; i < whiteButtons.length; i++)
+        {
+            whiteButtons[i] = new BoardPanel(this,i);
+            whiteButtons[i].setBackground(Color.WHITE);
+        }
+        panel = new JPanel();
+        panel.setLayout(new GridLayout(8, 8));
+        panel.setSize(600, 600);
+
+        for (int i = 0; i < 8; i++) {
+            whiteButtons[i].setPreferredSize(new Dimension(40,40));
+
+            if (i % 2 == 0) {
+                for (int j = 0; j < 4; j++) {
+                    if ( i <= 2)
+                    {
+                        blackButtons[4 * i + j].setXpos(i);
+                        blackButtons[4 * i + j].setYpos(j);
+                        blackButtons[4 * i + j].setActivated(true);
+                        blackButtons[4 * i + j].setPlayerId(1);
+                    }
+                    else if ( i >= 5 )
+                    {
+                        blackButtons[4 * i + j].setXpos(i);
+                        blackButtons[4 * i + j].setYpos(j);
+                        blackButtons[4 * i + j].setActivated(true);
+                        blackButtons[4 * i + j].setPlayerId(2);
+                    }
+                    panel.add(blackButtons[4 * i + j]);
+                    panel.add(whiteButtons[4 * i + j]);
                 }
-                else{
-                    g.setColor(Color.black);
+            } else {
+                for (int j = 0; j < 4; j++) {
+
+                    if ( i <= 1)
+                    {
+                        blackButtons[4 * i + j].setXpos(i);
+                        blackButtons[4 * i + j].setYpos(j);
+                        blackButtons[4 * i + j].setActivated(true);
+                        blackButtons[4 * i + j].setPlayerId(1);
+                    }
+                    else if (  i >= 5 )
+                    {
+                        blackButtons[4 * i + j].setXpos(i);
+                        blackButtons[4 * i + j].setYpos(j);
+                        blackButtons[4 * i + j].setActivated(true);
+                        blackButtons[4 * i + j].setPlayerId(2);
+                    }
+
+                    panel.add(whiteButtons[4 * i + j]);
+                    panel.add(blackButtons[4 * i + j]);
                 }
-                g.fillRect(x, y, 100, 100);
             }
         }
+        add(panel);
+    }
+
+    public BoardPanel[] getBlackButtons() {
+        return blackButtons;
+    }
+
+    public BoardPanel[] getWhiteButtons() {
+        return whiteButtons;
+    }
+
+    public JPanel getPanel() {
+        return panel;
     }
 }

@@ -1,6 +1,4 @@
-package edu.umkc.group11.screen;
-
-import static org.junit.Assert.assertTrue;
+package edu.umkc.group11;
 
 import edu.umkc.group11.client.PlayCheckersGame;
 import edu.umkc.group11.screen.CheckerBoardUI;
@@ -8,8 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit tests.
@@ -22,11 +21,12 @@ public class AppTest
     @Test
     public void checkerBoardUITestHappy()
     {
-        JFrame jFrame = new JFrame();
         CheckerBoardUI checkerBoardUI= new CheckerBoardUI();
-        jFrame.add(checkerBoardUI);
-        jFrame.pack();
-        assertTrue(jFrame.getComponents()[0].getPreferredSize().equals(new Dimension(900,900)));
+        assertTrue(checkerBoardUI.getBlackButtons().length == 32);
+        assertTrue(checkerBoardUI.getWhiteButtons().length == 32);
+        assertTrue(checkerBoardUI.getBlackButtons()[1].getBackground().equals(Color.GREEN));
+        assertTrue(checkerBoardUI.getWhiteButtons()[1].getBackground().equals(Color.WHITE));
+        assertTrue(checkerBoardUI.getPanel()  != null );
     }
 
     @Test
@@ -36,10 +36,4 @@ public class AppTest
         assertTrue(tmpPlayCheckersGame.getDefaultCloseOperation() == JFrame.EXIT_ON_CLOSE);
     }
 
-    @Test
-    public void checkerBoardUIPresentTest()
-    {
-        PlayCheckersGame tmpPlayCheckersGame=  new PlayCheckersGame("Checkers Board Game");
-        Assert.assertEquals(tmpPlayCheckersGame.getContentPane().getComponents()[0].getClass().getName(), "edu.umkc.group11.screen.CheckerBoardUI");
-    }
 }

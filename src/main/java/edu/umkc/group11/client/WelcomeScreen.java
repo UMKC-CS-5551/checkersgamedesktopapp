@@ -1,5 +1,7 @@
 package edu.umkc.group11.client;
 
+import edu.umkc.group11.client.PlayCheckersGame;
+
 import javax.swing.*;
 import java.awt.*;
 
