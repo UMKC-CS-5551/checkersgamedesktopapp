@@ -18,7 +18,8 @@ public class BoardPanel extends JPanel {
     private boolean selected;
     private CheckerBoardUI checkerBoardUI;
     private int index;
-
+    private PanelCoordinate panelCoordinate;
+    private MovementHelper movementHelper;
     public void resetButtonProperties()
     {
         String tmpIndex = String.valueOf(index);
@@ -41,15 +42,16 @@ public class BoardPanel extends JPanel {
     {
         this.index = index;
         this.checkerBoardUI = checkerBoardUI;
-        setPreferredSize(new Dimension(40,40));
+        setPreferredSize(new Dimension(100,100));
+        this.movementHelper = checkerBoardUI.getMovementHelper();
         button = new JButton();
-        button.setPreferredSize(new Dimension(30,30));
+        button.setPreferredSize(new Dimension(100,100));
         resetButtonProperties();
         button.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 buttonClickAction();
+
             }
         });
         add(button);
@@ -59,20 +61,37 @@ public class BoardPanel extends JPanel {
     {
         setSelected(false);
         GamePlayUtil util = new GamePlayUtil(checkerBoardUI);
+        this.movementHelper = checkerBoardUI.getMovementHelper();
         if ( playerId > 0)
         {
             util.resetOtherPanelsAndButtons(checkerBoardUI, button);
+
         }
         if ( playerId == 1)
         {
             setSelected(true);
+
             button.setBackground(Color.cyan);
+            movementHelper.populateMovementTrajectory("START", this);
         }
         else  if (  playerId == 2)
         {
             setSelected(true);
             button.setBackground(Color.MAGENTA);
+            movementHelper.populateMovementTrajectory("START", this);
         }
+        else if ( playerId == 0 && isActivated())
+        {
+            setSelected(true);
+
+                    if ( movementHelper.getMovementTrajectory().get("START") != null ) {
+
+                        System.out.println(movementHelper.getMovementTrajectory().size());
+                        movementHelper.populateMovementTrajectory("TARGET", this);
+                        movementHelper.swapPanelOccupants();
+                    }
+
+            }
 
     }
     public int getXpos() {
@@ -134,5 +153,32 @@ public class BoardPanel extends JPanel {
             button.setBackground(Color.ORANGE);
         }
 
+    }
+
+    public CheckerBoardUI getCheckerBoardUI() {
+        return checkerBoardUI;
+    }
+
+    public void setCheckerBoardUI(CheckerBoardUI checkerBoardUI) {
+        this.checkerBoardUI = checkerBoardUI;
+    }
+
+    public PanelCoordinate getPanelCoordinate() {
+        return panelCoordinate;
+    }
+
+    public void setPanelCoordinate(PanelCoordinate panelCoordinate) {
+        this.panelCoordinate = panelCoordinate;
+    }
+
+    public void setMovementHelper(MovementHelper movementHelper) {
+        this.movementHelper = movementHelper;
+    }
+
+
+
+
+    public int getIndex() {
+        return index;
     }
 }

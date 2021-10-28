@@ -20,6 +20,7 @@ public class PlayCheckersGame extends JFrame {
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
+        repaint();
 
     }
 

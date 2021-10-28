@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d4aa976-78e9-4743-ad6c-54566d116b21" name="Default Changelist" comment="Adjusting the code">
-      <change afterPath="$PROJECT_DIR$/checkergame.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/GamePlayUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/Colour.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/Piece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkers-game-desktop-app-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/checkers-game-desktop-app-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/PlayCheckersGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/PlayCheckersGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/WelcomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/WelcomeScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/AppTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +46,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PlayCheckersGame">
+  <component name="RunManager" selected="Application.WelcomeScreen">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.App" />
       <module name="checkersgamedesktopapp" />
@@ -106,8 +95,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PlayCheckersGame" />
         <item itemvalue="Application.WelcomeScreen" />
+        <item itemvalue="Application.PlayCheckersGame" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -130,7 +119,8 @@
       <workItem from="1634053897637" duration="363000" />
       <workItem from="1634074111293" duration="3602000" />
       <workItem from="1634176309368" duration="1107000" />
-      <workItem from="1635353283762" duration="69000" />
+      <workItem from="1635353283762" duration="784000" />
+      <workItem from="1635379244907" duration="15359000" />
     </task>
     <servers />
   </component>
