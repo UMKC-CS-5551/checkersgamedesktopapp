@@ -15,7 +15,8 @@ This application is being developed using Java Swing. We are using JUnit to test
 The entry-point to execute the code is in the edu.umkc.group11.client.PlayCheckersGame class.
 
 You have to execute this class to view the screen:
-![image](https://user-images.githubusercontent.com/70332819/136845517-a82fdb4b-77c6-4fa8-b92f-94fe9dac048e.png)
+![image](https://user-images.githubusercontent.com/70332819/139268486-6a3c051c-3f58-4216-a4a4-634e77bd120d.png)
+
 
 
 ## Instructions to run the app on your own desktop
