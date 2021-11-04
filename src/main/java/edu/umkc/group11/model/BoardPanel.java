@@ -193,4 +193,5 @@ public class BoardPanel extends JPanel {
     public int getIndex() {
         return index;
     }
+
 }

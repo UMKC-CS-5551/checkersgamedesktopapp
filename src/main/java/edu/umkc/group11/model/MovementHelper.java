@@ -1,5 +1,7 @@
 package edu.umkc.group11.model;
 
+import edu.umkc.group11.screen.CheckerBoardUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
@@ -8,10 +10,10 @@ import java.util.Map;
 public class MovementHelper {
 
     private Map<String, BoardPanel> movementTrajectory;
-
-    public MovementHelper()
+    private CheckerBoardUI checkerBoardUI;
+    public MovementHelper(CheckerBoardUI checkerBoardUI)
     {
-
+    this.checkerBoardUI = checkerBoardUI;
     }
     public void populateMovementTrajectory(String startEnd, BoardPanel boardPanel){
             getMovementTrajectory().put(startEnd, boardPanel);
@@ -34,6 +36,7 @@ public class MovementHelper {
         movementTrajectory = null;
     }
 
+  //  public boolean isJumpAllowed()
 
     public boolean isDiagonalMomentAllowed(PanelCoordinate checkerFrom, PanelCoordinate checkerTo, int playerId)
     {
@@ -50,6 +53,16 @@ public class MovementHelper {
                     return true;
                 }
             }
+            else if ( (checkerFrom.getRow() - checkerTo.getRow()) == -2 )
+            {
+                PanelCoordinate pc1 = new PanelCoordinate(checkerFrom.getRow()+1, checkerFrom.getCol()+1);
+                PanelCoordinate pc2 = new PanelCoordinate(checkerFrom.getRow()+1, checkerFrom.getCol());
+                BoardPanel boardPanel = this.checkerBoardUI.getBoardPanelByPanelCoordinate(pc1);
+                if ( boardPanel != null  && boardPanel.getPlayerId() == 2 )
+                {
+                    return true;
+                }
+            }
         }
        else if ( playerId == 2)
         {
@@ -60,6 +73,17 @@ public class MovementHelper {
                     return true;
                 }
             }
+            else if ( (checkerFrom.getRow() - checkerTo.getRow()) == -2 )
+            {
+                PanelCoordinate pc1 = new PanelCoordinate(checkerFrom.getRow()+1, checkerFrom.getCol()+1);
+                PanelCoordinate pc2 = new PanelCoordinate(checkerFrom.getRow()+1, checkerFrom.getCol());
+                BoardPanel boardPanel = this.checkerBoardUI.getBoardPanelByPanelCoordinate(pc1);
+                if ( boardPanel != null  && boardPanel.getPlayerId() == 1 )
+                {
+                    return true;
+                }
+            }
+
 
         }
         return false;

@@ -28,7 +28,7 @@ public class CheckerBoardUI extends JPanel  {
         blackButtons = new BoardPanel[4 * 8];
         whiteButtons = new BoardPanel[4 * 8];
         this.add(getJMasterPanel());
-        this.movementHelper = new MovementHelper();
+        this.movementHelper = new MovementHelper(this);
         getButtonGroupPlayers().add(getJRadioButtonPlayer1());
         getButtonGroupPlayers().add(getJRadioButtonPlayer2());
 
@@ -222,5 +222,17 @@ public class CheckerBoardUI extends JPanel  {
             playerUsageStack = new Stack<>();
         }
         return playerUsageStack;
+    }
+
+    public BoardPanel getBoardPanelByPanelCoordinate(PanelCoordinate panelCoordinate)
+    {
+        for ( BoardPanel boardPanel: blackButtons)
+        {
+            if ( boardPanel.getPanelCoordinate() != null && boardPanel.getPanelCoordinate().equals(panelCoordinate))
+            {
+                return boardPanel;
+            }
+        }
+        return null;
     }
 }

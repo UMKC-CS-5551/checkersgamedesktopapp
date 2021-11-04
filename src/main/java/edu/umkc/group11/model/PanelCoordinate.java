@@ -1,5 +1,7 @@
 package edu.umkc.group11.model;
 
+import java.util.Objects;
+
 public class PanelCoordinate {
 
     private int row;
@@ -24,5 +26,19 @@ public class PanelCoordinate {
 
     public void setCol(int col) {
         this.col = col;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PanelCoordinate)) return false;
+        PanelCoordinate that = (PanelCoordinate) o;
+        return getRow() == that.getRow() &&
+                getCol() == that.getCol();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getRow(), getCol());
     }
 }
