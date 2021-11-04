@@ -1,5 +1,6 @@
 package edu.umkc.group11.model;
 
+import edu.umkc.group11.GameUtils;
 import edu.umkc.group11.client.GamePlayUtil;
 import edu.umkc.group11.screen.CheckerBoardUI;
 
@@ -59,6 +60,7 @@ public class BoardPanel extends JPanel {
 
     void buttonClickAction()
     {
+        System.out.println(checkerBoardUI.getPlayerUsageStack().search("player1"));
         setSelected(false);
         GamePlayUtil util = new GamePlayUtil(checkerBoardUI);
         this.movementHelper = checkerBoardUI.getMovementHelper();
@@ -67,7 +69,7 @@ public class BoardPanel extends JPanel {
             util.resetOtherPanelsAndButtons(checkerBoardUI, button);
 
         }
-        if ( playerId == 1 && checkerBoardUI.isPlayerOneSelected())
+        if ( playerId == 1 && checkerBoardUI.isPlayerOneSelected() && !(checkerBoardUI.getPlayerUsageStack().search("player1") == 1))
         {
             setSelected(true);
             checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
@@ -76,7 +78,7 @@ public class BoardPanel extends JPanel {
             movementHelper.populateMovementTrajectory("START", this);
             checkerBoardUI.getPlayerUsageStack().push("player1");
         }
-        else  if (  playerId == 2 && checkerBoardUI.isPlayerTwoSelected())
+        else  if (  playerId == 2 && checkerBoardUI.isPlayerTwoSelected() && !(checkerBoardUI.getPlayerUsageStack().search("player2") == 1))
         {
             setSelected(true);
             checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
@@ -97,10 +99,10 @@ public class BoardPanel extends JPanel {
             }
             checkerBoardUI.getJRadioButtonPlayer1().setEnabled(true);
             checkerBoardUI.getJRadioButtonPlayer2().setEnabled(true);
-            if (!checkerBoardUI.getPlayerUsageStack().empty() && checkerBoardUI.getPlayerUsageStack().pop().equals("player1")) {
+            if (!checkerBoardUI.getPlayerUsageStack().empty() && GameUtils.hasThePlayerGotTurn(checkerBoardUI.getPlayerUsageStack(), "player1")) {
                 checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
 
-            } else if (!checkerBoardUI.getPlayerUsageStack().empty() && checkerBoardUI.getPlayerUsageStack().pop().equals("player2")) {
+            } else if (!checkerBoardUI.getPlayerUsageStack().empty() && GameUtils.hasThePlayerGotTurn(checkerBoardUI.getPlayerUsageStack(), "player2")) {
                 checkerBoardUI.getJRadioButtonPlayer2().setEnabled(false);
             }
         }
@@ -186,8 +188,6 @@ public class BoardPanel extends JPanel {
     public void setMovementHelper(MovementHelper movementHelper) {
         this.movementHelper = movementHelper;
     }
-
-
 
 
     public int getIndex() {
