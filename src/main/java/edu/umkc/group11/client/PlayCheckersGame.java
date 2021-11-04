@@ -11,19 +11,18 @@ public class PlayCheckersGame extends JFrame {
     public PlayCheckersGame(String title)
     {
         super(title);
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JPanel content = new JPanel(new GridBagLayout());
-        content.setBorder(new EmptyBorder(20, 20, 20, 20));
-        content.add(new CheckerBoardUI());
-        setContentPane(content);
-        pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
-        repaint();
+        JFrame window = new JFrame("Checkers");
+        CheckerBoardUI content = new CheckerBoardUI();
+        window.setContentPane(content);
+        window.pack();
+        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+        window.setLocation( (screensize.width - window.getWidth())/2,
+                (screensize.height - window.getHeight())/2 );
+        window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        window.setResizable(false);
+        window.setVisible(true);
 
     }
-
     public static void main(String[] args) {
 
         Runnable r = new Runnable() {

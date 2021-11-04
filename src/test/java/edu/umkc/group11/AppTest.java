@@ -36,4 +36,14 @@ public class AppTest
         assertTrue(tmpPlayCheckersGame.getDefaultCloseOperation() == JFrame.EXIT_ON_CLOSE);
     }
 
+    @Test
+    public void buttonClickTest()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI();
+        checkerBoardUI.getBlackButtons()[9].getButton().doClick();
+        assertTrue(checkerBoardUI.getBlackButtons()[9].isActivated());
+        assertTrue(checkerBoardUI.getBlackButtons()[9].getButton().getBackground().equals(Color.CYAN));
+
+    }
+
 }

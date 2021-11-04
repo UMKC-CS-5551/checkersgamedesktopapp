@@ -20,6 +20,7 @@ public class BoardPanel extends JPanel {
     private int index;
     private PanelCoordinate panelCoordinate;
     private MovementHelper movementHelper;
+
     public void resetButtonProperties()
     {
         String tmpIndex = String.valueOf(index);
@@ -51,7 +52,6 @@ public class BoardPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buttonClickAction();
-
             }
         });
         add(button);
@@ -67,31 +67,43 @@ public class BoardPanel extends JPanel {
             util.resetOtherPanelsAndButtons(checkerBoardUI, button);
 
         }
-        if ( playerId == 1)
+        if ( playerId == 1 && checkerBoardUI.isPlayerOneSelected())
         {
             setSelected(true);
-
+            checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
+            checkerBoardUI.getJRadioButtonPlayer2().setEnabled(false);
             button.setBackground(Color.cyan);
             movementHelper.populateMovementTrajectory("START", this);
+            checkerBoardUI.getPlayerUsageStack().push("player1");
         }
-        else  if (  playerId == 2)
+        else  if (  playerId == 2 && checkerBoardUI.isPlayerTwoSelected())
         {
             setSelected(true);
+            checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
+            checkerBoardUI.getJRadioButtonPlayer2().setEnabled(false);
+
             button.setBackground(Color.MAGENTA);
             movementHelper.populateMovementTrajectory("START", this);
+            checkerBoardUI.getPlayerUsageStack().push("player2");
         }
-        else if ( playerId == 0 && isActivated())
-        {
+        else if ( playerId == 0 && isActivated()) {
             setSelected(true);
 
-                    if ( movementHelper.getMovementTrajectory().get("START") != null ) {
+            if (movementHelper.getMovementTrajectory().get("START") != null) {
 
-                        System.out.println(movementHelper.getMovementTrajectory().size());
-                        movementHelper.populateMovementTrajectory("TARGET", this);
-                        movementHelper.swapPanelOccupants();
-                    }
-
+                System.out.println(movementHelper.getMovementTrajectory().size());
+                movementHelper.populateMovementTrajectory("TARGET", this);
+                movementHelper.swapPanelOccupants();
             }
+            checkerBoardUI.getJRadioButtonPlayer1().setEnabled(true);
+            checkerBoardUI.getJRadioButtonPlayer2().setEnabled(true);
+            if (!checkerBoardUI.getPlayerUsageStack().empty() && checkerBoardUI.getPlayerUsageStack().pop().equals("player1")) {
+                checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
+
+            } else if (!checkerBoardUI.getPlayerUsageStack().empty() && checkerBoardUI.getPlayerUsageStack().pop().equals("player2")) {
+                checkerBoardUI.getJRadioButtonPlayer2().setEnabled(false);
+            }
+        }
 
     }
     public int getXpos() {
