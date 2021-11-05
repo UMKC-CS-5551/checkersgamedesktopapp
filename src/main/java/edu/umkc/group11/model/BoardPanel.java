@@ -15,7 +15,7 @@ public class BoardPanel extends JPanel {
     private int ypos;
     private boolean activated;
     private JButton button;
-    private int playerId;
+    private Player player;
     private boolean selected;
     private CheckerBoardUI checkerBoardUI;
     private int index;
@@ -26,11 +26,11 @@ public class BoardPanel extends JPanel {
     {
         String tmpIndex = String.valueOf(index);
         button.setName(tmpIndex);
-        if ( playerId == 1)
+        if ( player !=null && player.getPlayerId() == 1)
         {
             button.setBackground(Color.BLUE);
         }
-        else if ( playerId == 2)
+        else if ( player !=null && player.getPlayerId() == 2)
         {
             button.setBackground(Color.RED);
         }
@@ -60,16 +60,15 @@ public class BoardPanel extends JPanel {
 
     void buttonClickAction()
     {
-        System.out.println(checkerBoardUI.getPlayerUsageStack().search("player1"));
         setSelected(false);
         GamePlayUtil util = new GamePlayUtil(checkerBoardUI);
         this.movementHelper = checkerBoardUI.getMovementHelper();
-        if ( playerId > 0)
+        if ( player != null && player.getPlayerId() > 0)
         {
             util.resetOtherPanelsAndButtons(checkerBoardUI, button);
 
         }
-        if ( playerId == 1 && checkerBoardUI.isPlayerOneSelected() && !(checkerBoardUI.getPlayerUsageStack().search("player1") == 1))
+        if ( player != null && player.getPlayerId() == 1 && checkerBoardUI.isPlayerOneSelected() && !(checkerBoardUI.getPlayerUsageStack().search("player1") == 1))
         {
             setSelected(true);
             checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
@@ -78,7 +77,7 @@ public class BoardPanel extends JPanel {
             movementHelper.populateMovementTrajectory("START", this);
             checkerBoardUI.getPlayerUsageStack().push("player1");
         }
-        else  if (  playerId == 2 && checkerBoardUI.isPlayerTwoSelected() && !(checkerBoardUI.getPlayerUsageStack().search("player2") == 1))
+        else  if (  player != null && player.getPlayerId() == 2 && checkerBoardUI.isPlayerTwoSelected() && !(checkerBoardUI.getPlayerUsageStack().search("player2") == 1))
         {
             setSelected(true);
             checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
@@ -88,12 +87,11 @@ public class BoardPanel extends JPanel {
             movementHelper.populateMovementTrajectory("START", this);
             checkerBoardUI.getPlayerUsageStack().push("player2");
         }
-        else if ( playerId == 0 && isActivated()) {
+        else if ( (player == null  || player.getPlayerId() == 0 ) && activated ) {
             setSelected(true);
 
             if (movementHelper.getMovementTrajectory().get("START") != null) {
 
-                System.out.println(movementHelper.getMovementTrajectory().size());
                 movementHelper.populateMovementTrajectory("TARGET", this);
                 movementHelper.swapPanelOccupants();
             }
@@ -101,9 +99,14 @@ public class BoardPanel extends JPanel {
             checkerBoardUI.getJRadioButtonPlayer2().setEnabled(true);
             if (!checkerBoardUI.getPlayerUsageStack().empty() && GameUtils.hasThePlayerGotTurn(checkerBoardUI.getPlayerUsageStack(), "player1")) {
                 checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
+                checkerBoardUI.getJRadioButtonPlayer2().setSelected(true);
+                checkerBoardUI.getJRadioButtonPlayer2().doClick();
 
             } else if (!checkerBoardUI.getPlayerUsageStack().empty() && GameUtils.hasThePlayerGotTurn(checkerBoardUI.getPlayerUsageStack(), "player2")) {
                 checkerBoardUI.getJRadioButtonPlayer2().setEnabled(false);
+                checkerBoardUI.getJRadioButtonPlayer1().setSelected(true);
+                checkerBoardUI.getJRadioButtonPlayer1().doClick();
+
             }
         }
 
@@ -140,9 +143,6 @@ public class BoardPanel extends JPanel {
         this.button = button;
     }
 
-    public int getPlayerId() {
-        return playerId;
-    }
 
     public boolean isSelected() {
         return selected;
@@ -150,23 +150,6 @@ public class BoardPanel extends JPanel {
 
     public void setSelected(boolean selected) {
         this.selected = selected;
-    }
-
-    public void setPlayerId(int playerId) {
-        this.playerId = playerId;
-        if ( playerId == 1)
-        {
-            button.setBackground(Color.BLUE);
-        }
-        else if ( playerId == 2)
-        {
-            button.setBackground(Color.RED);
-        }
-        else
-        {
-            button.setBackground(Color.ORANGE);
-        }
-
     }
 
     public CheckerBoardUI getCheckerBoardUI() {
@@ -189,6 +172,27 @@ public class BoardPanel extends JPanel {
         this.movementHelper = movementHelper;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+        if ( player != null && player.getPlayerId() == 1)
+        {
+            button.setBackground(Color.BLUE);
+        }
+        else if ( player != null && player.getPlayerId() == 2)
+        {
+            button.setBackground(Color.RED);
+        }
+        else
+        {
+            button.setBackground(Color.ORANGE);
+        }
+
+
+    }
 
     public int getIndex() {
         return index;

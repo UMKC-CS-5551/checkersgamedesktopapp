@@ -4,6 +4,7 @@ package edu.umkc.group11.screen;
 import edu.umkc.group11.model.BoardPanel;
 import edu.umkc.group11.model.MovementHelper;
 import edu.umkc.group11.model.PanelCoordinate;
+import edu.umkc.group11.model.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -146,13 +147,13 @@ public class CheckerBoardUI extends JPanel  {
                     {
                         blackButtons[4 * i + j].setXpos(i);
                         blackButtons[4 * i + j].setYpos(j);
-                        blackButtons[4 * i + j].setPlayerId(1);
+                        blackButtons[4 * i + j].setPlayer(new Player(1, true));
                     }
                     else if ( i >= 5 )
                     {
                         blackButtons[4 * i + j].setXpos(i);
                         blackButtons[4 * i + j].setYpos(j);
-                        blackButtons[4 * i + j].setPlayerId(2);
+                        blackButtons[4 * i + j].setPlayer(new Player(2, true));
                     }
                     panel.add(blackButtons[4 * i + j]);
                     panel.add(whiteButtons[4 * i + j]);
@@ -169,13 +170,13 @@ public class CheckerBoardUI extends JPanel  {
                     {
                         blackButtons[4 * i + j].setXpos(i);
                         blackButtons[4 * i + j].setYpos(j);
-                        blackButtons[4 * i + j].setPlayerId(1);
+                        blackButtons[4 * i + j].setPlayer(new Player(1,true));
                     }
                     else if (  i >= 5 )
                     {
                         blackButtons[4 * i + j].setXpos(i);
                         blackButtons[4 * i + j].setYpos(j);
-                        blackButtons[4 * i + j].setPlayerId(2);
+                        blackButtons[4 * i + j].setPlayer(new Player(2, true));
                     }
 
                     panel.add(whiteButtons[4 * i + j]);

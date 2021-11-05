@@ -2,7 +2,6 @@ package edu.umkc.group11.model;
 
 import edu.umkc.group11.screen.CheckerBoardUI;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +35,12 @@ public class MovementHelper {
         movementTrajectory = null;
     }
 
-  //  public boolean isJumpAllowed()
+    public void makeOpponentPieceToDisappear(BoardPanel opponentBoardPanel)
+    {
+        opponentBoardPanel.getButton().setBackground(Color.WHITE);
+        opponentBoardPanel.getPlayer().setPlayerId(0);
+        opponentBoardPanel.getPlayer().setActive(false);
+    }
 
     public boolean isDiagonalMomentAllowed(PanelCoordinate checkerFrom, PanelCoordinate checkerTo, int playerId)
     {
@@ -55,11 +59,27 @@ public class MovementHelper {
             }
             else if ( (checkerFrom.getRow() - checkerTo.getRow()) == -2 )
             {
-                PanelCoordinate pc1 = new PanelCoordinate(checkerFrom.getRow()+1, checkerFrom.getCol()+1);
-                PanelCoordinate pc2 = new PanelCoordinate(checkerFrom.getRow()+1, checkerFrom.getCol());
-                BoardPanel boardPanel = this.checkerBoardUI.getBoardPanelByPanelCoordinate(pc1);
-                if ( boardPanel != null  && boardPanel.getPlayerId() == 2 )
+                int tempCol1 = 0;
+                if ( checkerFrom.getRow() % 2 == 0)
                 {
+                    tempCol1 = -1;
+                }
+                else if ( checkerFrom.getRow() % 2 != 0 )
+                {
+                    tempCol1 = 1;
+                }
+                PanelCoordinate pc1 = new PanelCoordinate(checkerFrom.getRow()+1, checkerFrom.getCol());
+                PanelCoordinate pc2 = new PanelCoordinate(checkerFrom.getRow()+1, checkerFrom.getCol()+tempCol1);
+                BoardPanel boardPanelPosition1 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(pc1);
+                BoardPanel boardPanelPosition2 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(pc2);
+                if ( boardPanelPosition1 != null  && boardPanelPosition1.getPlayer() != null  && boardPanelPosition1.getPlayer().getPlayerId() == 2 )
+                {
+                    makeOpponentPieceToDisappear(boardPanelPosition1);
+                    return true;
+                }
+                else if ( boardPanelPosition2 != null  && boardPanelPosition2.getPlayer() !=  null && boardPanelPosition2.getPlayer().getPlayerId() == 2 )
+                {
+                    makeOpponentPieceToDisappear(boardPanelPosition2);
                     return true;
                 }
             }
@@ -73,13 +93,30 @@ public class MovementHelper {
                     return true;
                 }
             }
-            else if ( (checkerFrom.getRow() - checkerTo.getRow()) == -2 )
+            else if ( (checkerFrom.getRow() - checkerTo.getRow()) == 2 )
             {
-                PanelCoordinate pc1 = new PanelCoordinate(checkerFrom.getRow()+1, checkerFrom.getCol()+1);
-                PanelCoordinate pc2 = new PanelCoordinate(checkerFrom.getRow()+1, checkerFrom.getCol());
-                BoardPanel boardPanel = this.checkerBoardUI.getBoardPanelByPanelCoordinate(pc1);
-                if ( boardPanel != null  && boardPanel.getPlayerId() == 1 )
+                int tempCol1 = 0;
+                if ( checkerFrom.getRow() % 2 == 0)
                 {
+                    tempCol1 = -1;
+                }
+                else if ( checkerFrom.getRow() % 2 != 0 )
+                {
+                    tempCol1 = 1;
+                }
+
+                PanelCoordinate pc1 = new PanelCoordinate(checkerFrom.getRow()-1, checkerFrom.getCol() + tempCol1);
+                PanelCoordinate pc2 = new PanelCoordinate(checkerFrom.getRow()-1, checkerFrom.getCol());
+                BoardPanel boardPanelPosition1 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(pc1);
+                BoardPanel boardPanelPosition2 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(pc2);
+                if ( boardPanelPosition1 != null  && boardPanelPosition1.getPlayer() != null && boardPanelPosition1.getPlayer().getPlayerId() == 1 )
+                {
+                    makeOpponentPieceToDisappear(boardPanelPosition1);
+                    return true;
+                }
+                if ( boardPanelPosition2 != null  && boardPanelPosition2.getPlayer() != null && boardPanelPosition2.getPlayer().getPlayerId() == 1 )
+                {
+                    makeOpponentPieceToDisappear(boardPanelPosition2);
                     return true;
                 }
             }
@@ -94,25 +131,25 @@ public class MovementHelper {
     {
         PanelCoordinate to = getMovementTrajectory().get("TARGET").getPanelCoordinate();
         PanelCoordinate from = getMovementTrajectory().get("START").getPanelCoordinate();
-        int playerId = getMovementTrajectory().get("START").getPlayerId();
+        int playerId = getMovementTrajectory().get("START").getPlayer().getPlayerId();
 
-        if ( getMovementTrajectory().get("START").getPlayerId() == 1 && isDiagonalMomentAllowed(from, to, playerId)){
-            int pid = getMovementTrajectory().get("TARGET").getPlayerId();
+        if ( getMovementTrajectory().get("START").getPlayer().getPlayerId() == 1 && isDiagonalMomentAllowed(from, to, playerId)){
+            Player player = getMovementTrajectory().get("TARGET").getPlayer();
             getMovementTrajectory().get("TARGET").getButton().setBackground(PlayerColor.PLAYER_ONE.getColor());
 
             int index = getMovementTrajectory().get("START").getIndex();
-            getMovementTrajectory().get("TARGET").setPlayerId(getMovementTrajectory().get("START").getPlayerId());
-            getMovementTrajectory().get("START").setPlayerId(pid);
+            getMovementTrajectory().get("TARGET").setPlayer(getMovementTrajectory().get("START").getPlayer());
+            getMovementTrajectory().get("START").setPlayer(player);
 
             getMovementTrajectory().get("START").getCheckerBoardUI().getBlackButtons()[index].getButton().setBackground(PlayerColor.BLANK.getColor());
             getMovementTrajectory().get("START").getCheckerBoardUI().getPanel().getParent().repaint();
         }
-        else if ( getMovementTrajectory().get("START").getPlayerId() == 2  && isDiagonalMomentAllowed(from, to, playerId)){
-            int pid = getMovementTrajectory().get("TARGET").getPlayerId();
+        else if ( getMovementTrajectory().get("START").getPlayer().getPlayerId() == 2  && isDiagonalMomentAllowed(from, to, playerId)){
+            Player player = getMovementTrajectory().get("TARGET").getPlayer();
             getMovementTrajectory().get("TARGET").getButton().setBackground(PlayerColor.PLAYER_TWO.getColor());
             int index = getMovementTrajectory().get("START").getIndex();
-            getMovementTrajectory().get("TARGET").setPlayerId(getMovementTrajectory().get("START").getPlayerId());
-            getMovementTrajectory().get("START").setPlayerId(pid);
+            getMovementTrajectory().get("TARGET").setPlayer(getMovementTrajectory().get("START").getPlayer());
+            getMovementTrajectory().get("START").setPlayer(player);
             getMovementTrajectory().get("START").getCheckerBoardUI().getBlackButtons()[index].getButton().setBackground(PlayerColor.BLANK.getColor());
             getMovementTrajectory().get("START").getCheckerBoardUI().getPanel().getParent().repaint();
             resetMovementTrajectory();

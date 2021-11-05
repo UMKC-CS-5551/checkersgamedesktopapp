@@ -18,7 +18,7 @@ public class GamePlayUtil {
         BoardPanel[] boardPanels = checkerBoardUI.getBlackButtons();
         for ( BoardPanel boardPanel: boardPanels)
         {
-            if ( boardPanel.getButton().getName() != null &&  !boardPanel.getButton().getName().equals(activatedButton.getName()) && boardPanel.getPlayerId() > 0)
+            if ( boardPanel.getPlayer() != null && boardPanel.getButton().getName() != null &&  !boardPanel.getButton().getName().equals(activatedButton.getName()) && boardPanel.getPlayer().getPlayerId() > 0)
             {
                 boardPanel.resetButtonProperties();
             }
