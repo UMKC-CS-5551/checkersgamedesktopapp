@@ -23,6 +23,8 @@ public class CheckerBoardUI extends JPanel  {
     private boolean playerTwoSelected;
     private ButtonGroup buttonGroupPlayers;
     private Stack<String> playerUsageStack;
+    private Player playerOne;
+    private Player playerTwo;
 
     public CheckerBoardUI()
     {
@@ -47,7 +49,6 @@ public class CheckerBoardUI extends JPanel  {
                 playerTwoSelected = true;
             }
         });
-
     }
 
     public ButtonGroup getButtonGroupPlayers()
@@ -235,5 +236,21 @@ public class CheckerBoardUI extends JPanel  {
             }
         }
         return null;
+    }
+
+    public Player getPlayerOne() {
+        return playerOne;
+    }
+
+    public void setPlayerOne(Player playerOne) {
+        this.playerOne = playerOne;
+    }
+
+    public Player getPlayerTwo() {
+        return playerTwo;
+    }
+
+    public void setPlayerTwo(Player playerTwo) {
+        this.playerTwo = playerTwo;
     }
 }

@@ -29,10 +29,15 @@ public class BoardPanel extends JPanel {
         if ( player !=null && player.getPlayerId() == 1)
         {
             button.setBackground(Color.BLUE);
+            JLabel l1 = new JLabel(("player1"));
+            add(l1);
         }
         else if ( player !=null && player.getPlayerId() == 2)
         {
             button.setBackground(Color.RED);
+            button.setText("player2");
+            JLabel l2 = new JLabel(("player2"));
+            add(l2);
         }
         else
         {
@@ -47,6 +52,8 @@ public class BoardPanel extends JPanel {
         setPreferredSize(new Dimension(100,100));
         this.movementHelper = checkerBoardUI.getMovementHelper();
         button = new JButton();
+        button.setOpaque(true);
+
         button.setPreferredSize(new Dimension(100,100));
         resetButtonProperties();
         button.addActionListener(new ActionListener() {
@@ -63,10 +70,9 @@ public class BoardPanel extends JPanel {
         setSelected(false);
         GamePlayUtil util = new GamePlayUtil(checkerBoardUI);
         this.movementHelper = checkerBoardUI.getMovementHelper();
-        if ( player != null && player.getPlayerId() > 0)
+        if ( (player != null && player.getPlayerId() > 0))
         {
             util.resetOtherPanelsAndButtons(checkerBoardUI, button);
-
         }
         if ( player != null && player.getPlayerId() == 1 && checkerBoardUI.isPlayerOneSelected() && !(checkerBoardUI.getPlayerUsageStack().search("player1") == 1))
         {
@@ -178,13 +184,14 @@ public class BoardPanel extends JPanel {
 
     public void setPlayer(Player player) {
         this.player = player;
-        if ( player != null && player.getPlayerId() == 1)
-        {
+        if ( player != null && player.getPlayerId() == 1) {
             button.setBackground(Color.BLUE);
+         //   button.setText(button.getText() + "Pl1");
         }
         else if ( player != null && player.getPlayerId() == 2)
         {
             button.setBackground(Color.RED);
+            button.setToolTipText("Player 2");
         }
         else
         {
