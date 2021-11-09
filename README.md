@@ -2,8 +2,8 @@
 
 #  CS5551 Project
 # Project Team Members:
-                               Madhuri Sarode
-                               Debsankar Mukhopadhyay
+                               Madhuri Sarode (active as of 11/5/2021)
+                               Debsankar Mukhopadhyay (active as of 11/5/2021)
                                Mounika chinna bandhyala
                                Neeharika jasti
                                Ajay reddy Byreddy
