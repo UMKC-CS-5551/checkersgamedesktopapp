@@ -8,6 +8,8 @@ import edu.umkc.group11.model.Player;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Stack;
 
 public class CheckerBoardUI extends JPanel  {
@@ -25,9 +27,14 @@ public class CheckerBoardUI extends JPanel  {
     private Stack<String> playerUsageStack;
     private Player playerOne;
     private Player playerTwo;
+    private JButton player1NoMoves;
+    private JButton player2NoMoves;
+    private JButton exitButton;
 
-    public CheckerBoardUI()
+    public CheckerBoardUI(String title)
     {
+        initializePlayers(title);
+
         blackButtons = new BoardPanel[4 * 8];
         whiteButtons = new BoardPanel[4 * 8];
         this.add(getJMasterPanel());
@@ -49,6 +56,85 @@ public class CheckerBoardUI extends JPanel  {
                 playerTwoSelected = true;
             }
         });
+
+        player1NoMoves.addActionListener(e ->
+        {
+            try {
+                recordHighScore(playerTwo.getName());
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+            displayExitGameWindow(playerTwo.getName());
+        });
+
+        player2NoMoves.addActionListener(e ->
+        {
+            try {
+                recordHighScore(playerOne.getName());
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+            displayExitGameWindow(playerOne.getName());
+        });
+        exitButton.addActionListener(e ->
+        {
+            System.exit(0);
+        });
+
+    }
+
+    public void initializePlayers( String playersNames)
+    {
+        String[] player_names = playersNames.split(",");
+        playerOne = new Player(1,player_names[0]);
+        playerTwo = new Player(2,player_names[1]);
+    }
+
+    public void displayExitGameWindow(String playerWonName)
+    {
+        JLabel label1 = new JLabel("Opposite player has ended the game");
+        label1.setFont(new Font("Times New Roman", Font.BOLD, 15));
+
+        JLabel label2 = new JLabel("because of no moves left");
+        label2.setFont(new Font("Times New Roman", Font.BOLD, 15));
+
+
+        JLabel name = new JLabel("Winner : " + playerWonName);
+        name.setFont(new Font("Times New Roman", Font.BOLD, 15));
+
+        JFrame f=new JFrame("Game result");//creating instance of JFrame
+        f.setBounds(50, 50, 370, 600);
+        JButton submitButton=new JButton("Ok");//creating instance of JButton
+        submitButton.setBackground(Color.green);
+
+        label1.setBounds(90,30,300, 140);
+        label2.setBounds(100,50,300, 140);
+        name.setBounds(120,100,300, 140);//x axis, y axis, width, height
+        submitButton.setBounds(130,300,100, 40);
+
+        f.add(label1);
+        f.add(label2);
+        f.add(name);//adding button in JFrame
+        f.add(submitButton);
+        f.setSize(600,500);//400 width and 500 height
+        f.setLayout(null);//using no layout managers
+        f.setVisible(true);//making the frame visibl
+        submitButton.addActionListener(e ->
+        {
+            f.dispose();
+
+        });
+    }
+
+
+    public void recordHighScore(String playerWonName) throws FileNotFoundException {
+        PrintWriter writer = new PrintWriter("src/main/java/edu/umkc/group11/client/ScoreRecord.txt");
+        writer.print("");
+        writer.print("Date Played : " + java.time.LocalDateTime.now());
+        writer.print("  Winner : " + playerWonName);
+        writer.close();
+
+
     }
 
     public ButtonGroup getButtonGroupPlayers()
@@ -69,6 +155,9 @@ public class CheckerBoardUI extends JPanel  {
             GridLayout gridLayout = new GridLayout();
             jTopPanel.add(getJRadioButtonPlayer1(), null);
             jTopPanel.add(getJRadioButtonPlayer2(), null);
+            jTopPanel.add(getPlayer1NoMovesButton());
+            jTopPanel.add(getPlayer2NoMovesButton());
+            jTopPanel.add(getExitButton());
         }
         return jTopPanel;
     }
@@ -92,7 +181,7 @@ public class CheckerBoardUI extends JPanel  {
         if ( jRadioButtonPlayer1 == null )
         {
             jRadioButtonPlayer1 = new JRadioButton();
-            jRadioButtonPlayer1.setText("Player 1");
+            jRadioButtonPlayer1.setText(playerOne.getName());
             jRadioButtonPlayer1.setForeground(Color.BLUE);
             jRadioButtonPlayer1.setFont(new Font("Dialog", Font.BOLD, 11));
         }
@@ -104,7 +193,7 @@ public class CheckerBoardUI extends JPanel  {
         if ( jRadioButtonPlayer2 == null )
         {
             jRadioButtonPlayer2 = new JRadioButton();
-            jRadioButtonPlayer2.setText("Player 2");
+            jRadioButtonPlayer2.setText(playerTwo.getName());
             jRadioButtonPlayer2.setForeground(Color.RED);
 
             jRadioButtonPlayer2.setFont(new Font("Dialog", Font.BOLD, 11));
@@ -185,7 +274,7 @@ public class CheckerBoardUI extends JPanel  {
                 }
             }
         }
-     //   add(panel);
+        //   add(panel);
         panel.repaint();
         return panel;
     }
@@ -236,6 +325,30 @@ public class CheckerBoardUI extends JPanel  {
             }
         }
         return null;
+    }
+
+    public JButton getPlayer1NoMovesButton()
+    {
+        player1NoMoves = new JButton();
+        player1NoMoves.setText(playerOne.getName() + ":Have no moves");
+        player1NoMoves.setForeground(Color.RED);
+        return player1NoMoves;
+    }
+
+    public JButton getPlayer2NoMovesButton()
+    {
+        player2NoMoves = new JButton();
+        player2NoMoves.setText(playerTwo.getName() + ":Have no moves");
+        player2NoMoves.setForeground(Color.RED);
+        return player2NoMoves;
+    }
+
+    public JButton getExitButton()
+    {
+        exitButton = new JButton();
+        exitButton.setText("Exit game");
+        exitButton.setForeground(Color.magenta);
+        return exitButton;
     }
 
     public Player getPlayerOne() {

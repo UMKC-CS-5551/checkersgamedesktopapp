@@ -12,7 +12,7 @@ public class PlayCheckersGame extends JFrame {
     {
         super(title);
         JFrame window = new JFrame("Checkers");
-        CheckerBoardUI content = new CheckerBoardUI();
+        CheckerBoardUI content = new CheckerBoardUI(title);
         window.setContentPane(content);
         window.pack();
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
