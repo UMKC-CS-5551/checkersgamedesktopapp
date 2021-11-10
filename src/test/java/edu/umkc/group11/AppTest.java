@@ -43,18 +43,13 @@ public class AppTest
     }
 
 
-    @Test
-    public void exitOptionTest()
-    {
-        PlayCheckersGame tmpPlayCheckersGame=  new PlayCheckersGame("Checkers Board Game");
-        assertTrue(tmpPlayCheckersGame.getDefaultCloseOperation() == JFrame.EXIT_ON_CLOSE);
-    }
 
     @Test
     public void buttonClickTest()
     {
         String playersNames = "PLayer1,Player2";
         CheckerBoardUI checkerBoardUI= new CheckerBoardUI(playersNames);
+        checkerBoardUI.getJRadioButtonPlayer1().doClick();
         checkerBoardUI.getBlackButtons()[9].getButton().doClick();
         assertTrue(checkerBoardUI.getBlackButtons()[9].isActivated());
         assertTrue(checkerBoardUI.getBlackButtons()[9].getButton().getBackground().equals(Color.CYAN));
