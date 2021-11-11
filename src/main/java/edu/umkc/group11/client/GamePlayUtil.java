@@ -21,6 +21,28 @@ public class GamePlayUtil {
             if ( boardPanel.getPlayer() != null && boardPanel.getButton().getName() != null &&  !boardPanel.getButton().getName().equals(activatedButton.getName()) && boardPanel.getPlayer().getPlayerId() > 0)
             {
                 boardPanel.resetButtonProperties();
+                if ( boardPanel.getPlayer().isKing() )
+                {
+                    String tmpText = boardPanel.getPanelCoordinate().getRow() + "," + boardPanel.getPanelCoordinate().getCol();
+                    boardPanel.getButton().setText(tmpText + " K ");
+                }
+                else
+                {
+                    String tmpText = boardPanel.getPanelCoordinate().getRow() + "," + boardPanel.getPanelCoordinate().getCol();
+                    boardPanel.getButton().setText(tmpText);
+                }
+            }
+            else if ( boardPanel.getPlayer() == null )
+            {
+                String tmpText = boardPanel.getPanelCoordinate().getRow() + "," + boardPanel.getPanelCoordinate().getCol();
+                boardPanel.getButton().setText(tmpText);
+
+            }
+            else  if ( boardPanel.getPlayer() != null && boardPanel.getPlayer().getPlayerId() == 0 )
+            {
+                String tmpText = boardPanel.getPanelCoordinate().getRow() + "," + boardPanel.getPanelCoordinate().getCol();
+                boardPanel.getButton().setText(tmpText);
+
             }
         }
     }

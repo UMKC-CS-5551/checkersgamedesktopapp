@@ -29,15 +29,10 @@ public class BoardPanel extends JPanel {
         if ( player !=null && player.getPlayerId() == 1)
         {
             button.setBackground(Color.BLUE);
-            JLabel l1 = new JLabel(("player1"));
-            add(l1);
         }
         else if ( player !=null && player.getPlayerId() == 2)
         {
             button.setBackground(Color.RED);
-            button.setText("player2");
-            JLabel l2 = new JLabel(("player2"));
-            add(l2);
         }
         else
         {
@@ -112,10 +107,9 @@ public class BoardPanel extends JPanel {
                 checkerBoardUI.getJRadioButtonPlayer2().setEnabled(false);
                 checkerBoardUI.getJRadioButtonPlayer1().setSelected(true);
                 checkerBoardUI.getJRadioButtonPlayer1().doClick();
-
             }
         }
-
+        util.resetOtherPanelsAndButtons(checkerBoardUI, button);
     }
     public int getXpos() {
         return xpos;
@@ -186,12 +180,10 @@ public class BoardPanel extends JPanel {
         this.player = player;
         if ( player != null && player.getPlayerId() == 1) {
             button.setBackground(Color.BLUE);
-         //   button.setText(button.getText() + "Pl1");
         }
         else if ( player != null && player.getPlayerId() == 2)
         {
             button.setBackground(Color.RED);
-            button.setToolTipText("Player 2");
         }
         else
         {

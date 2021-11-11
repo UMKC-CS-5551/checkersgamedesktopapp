@@ -1,5 +1,6 @@
 package edu.umkc.group11.model;
 
+import edu.umkc.group11.client.GamePlayUtil;
 import edu.umkc.group11.screen.CheckerBoardUI;
 
 import java.awt.*;
@@ -40,6 +41,7 @@ public class MovementHelper {
         opponentBoardPanel.getButton().setBackground(Color.WHITE);
         opponentBoardPanel.getPlayer().setPlayerId(0);
         opponentBoardPanel.getPlayer().setActive(false);
+        opponentBoardPanel.getPlayer().setKing(false);
     }
 
     public boolean isDiagonalMomentAllowed(PanelCoordinate checkerFrom, PanelCoordinate checkerTo, int playerId, boolean isKing)
@@ -193,16 +195,10 @@ public class MovementHelper {
                         return true;
                     }
                 }
-
-
             }
-
-
-
         }
         return false;
     }
-
 
     public void swapPanelOccupants()
     {
@@ -220,13 +216,7 @@ public class MovementHelper {
             int index = getMovementTrajectory().get("START").getIndex();
             getMovementTrajectory().get("TARGET").setPlayer(getMovementTrajectory().get("START").getPlayer());
             getMovementTrajectory().get("START").setPlayer(player);
-
-            if ( to.getRow() == 7 )
-            {
-                getMovementTrajectory().get("TARGET").getPlayer().setKing(true);
-                getMovementTrajectory().get("TARGET").getButton().setText("K");
-
-            }
+            convertToKing( getMovementTrajectory().get("TARGET"), to);
             getMovementTrajectory().get("START").getCheckerBoardUI().getBlackButtons()[index].getButton().setBackground(PlayerColor.BLANK.getColor());
             getMovementTrajectory().get("START").getCheckerBoardUI().getPanel().getParent().repaint();
         }
@@ -237,19 +227,23 @@ public class MovementHelper {
             getMovementTrajectory().get("TARGET").setPlayer(getMovementTrajectory().get("START").getPlayer());
             getMovementTrajectory().get("START").setPlayer(player);
             getMovementTrajectory().get("START").getCheckerBoardUI().getBlackButtons()[index].getButton().setBackground(PlayerColor.BLANK.getColor());
-
-            if ( to.getRow() == 0 )
-            {
-                getMovementTrajectory().get("TARGET").getPlayer().setKing(true);
-                getMovementTrajectory().get("TARGET").getButton().setText("K");
-
-            }
-
+            convertToKing( getMovementTrajectory().get("TARGET"), to);
 
             getMovementTrajectory().get("START").getCheckerBoardUI().getPanel().getParent().repaint();
-         //   resetMovementTrajectory();
         }
 
+    }
+
+    public void convertToKing(BoardPanel boardPanel, PanelCoordinate fromTo)
+    {
+        if ( boardPanel.getPlayer().getPlayerId() == 1 && fromTo.getRow() == 7 )
+        {
+            boardPanel.getPlayer().setKing(true);
+        }
+        else if ( boardPanel.getPlayer().getPlayerId() == 2 && fromTo.getRow() == 0 )
+        {
+            boardPanel.getPlayer().setKing(true);
+        }
     }
 
 }
