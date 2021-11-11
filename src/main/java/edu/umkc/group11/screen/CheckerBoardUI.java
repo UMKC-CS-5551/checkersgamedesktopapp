@@ -30,6 +30,8 @@ public class CheckerBoardUI extends JPanel  {
     private JButton player1NoMoves;
     private JButton player2NoMoves;
     private JButton exitButton;
+    JLabel playerOneScoreField;
+    JLabel playerTwoScoreField;
 
     public CheckerBoardUI(String title)
     {
@@ -83,7 +85,14 @@ public class CheckerBoardUI extends JPanel  {
 
     }
 
-    public void initializePlayers( String playersNames)
+
+    public void updateScoresOnBoard()
+    {
+        playerOneScoreField.setText("Score : "+String.valueOf(movementHelper.getPlayerOneScore()));
+        playerTwoScoreField.setText("Score : "+String.valueOf(movementHelper.getPlayerTwoScore()));
+    }
+
+    public void initializePlayers(String playersNames)
     {
         String[] player_names = playersNames.split(",");
         playerOne = new Player(1,player_names[0]);
@@ -154,13 +163,34 @@ public class CheckerBoardUI extends JPanel  {
             jTopPanel = new JPanel();
             GridLayout gridLayout = new GridLayout();
             jTopPanel.add(getJRadioButtonPlayer1(), null);
+            jTopPanel.add(getPlayerOneScoreField());
             jTopPanel.add(getJRadioButtonPlayer2(), null);
+            jTopPanel.add(getPlayerTwoScoreField());
             jTopPanel.add(getPlayer1NoMovesButton());
             jTopPanel.add(getPlayer2NoMovesButton());
             jTopPanel.add(getExitButton());
         }
         return jTopPanel;
     }
+
+    public JLabel getPlayerOneScoreField()
+    {
+        playerOneScoreField = new JLabel("");
+        playerOneScoreField.setText("Score : 0");
+        playerOneScoreField.setForeground(Color.BLUE);
+        playerOneScoreField.setFont(new Font("Dialog", Font.BOLD, 11));
+        return playerOneScoreField;
+    }
+
+    public JLabel getPlayerTwoScoreField()
+    {
+        playerTwoScoreField = new JLabel("");
+        playerTwoScoreField.setText(" Score : 0");
+        playerTwoScoreField.setForeground(Color.RED);
+        playerTwoScoreField.setFont(new Font("Dialog", Font.BOLD, 11));
+        return playerTwoScoreField;
+    }
+
 
     public JPanel getJMasterPanel()
     {
@@ -331,7 +361,7 @@ public class CheckerBoardUI extends JPanel  {
     {
         player1NoMoves = new JButton();
         player1NoMoves.setText(playerOne.getName() + ":Have no moves");
-        player1NoMoves.setForeground(Color.RED);
+        player1NoMoves.setForeground(Color.BLACK);
         return player1NoMoves;
     }
 
@@ -339,7 +369,7 @@ public class CheckerBoardUI extends JPanel  {
     {
         player2NoMoves = new JButton();
         player2NoMoves.setText(playerTwo.getName() + ":Have no moves");
-        player2NoMoves.setForeground(Color.RED);
+        player2NoMoves.setForeground(Color.BLACK);
         return player2NoMoves;
     }
 

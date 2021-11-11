@@ -11,6 +11,26 @@ public class MovementHelper {
 
     private Map<String, BoardPanel> movementTrajectory;
     private CheckerBoardUI checkerBoardUI;
+    int playerOneScore=0;
+    int playerTwoScore=0;
+
+
+    public int getPlayerOneScore() {
+        return playerOneScore;
+    }
+
+    public void setPlayerOneScore(int playerOneScore) {
+        this.playerOneScore = playerOneScore;
+    }
+
+    public int getPlayerTwoScore() {
+        return playerTwoScore;
+    }
+
+    public void setPlayerTwoScore(int playerTwoScore) {
+        this.playerTwoScore = playerTwoScore;
+    }
+
     public MovementHelper(CheckerBoardUI checkerBoardUI)
     {
     this.checkerBoardUI = checkerBoardUI;
@@ -44,6 +64,23 @@ public class MovementHelper {
         opponentBoardPanel.getPlayer().setKing(false);
     }
 
+    public void playerScoreTracker(int playerId)
+    {
+        if(playerId == 1)
+        {
+            int score = getPlayerOneScore() + 1;
+            setPlayerOneScore(score);
+        }
+
+        if(playerId == 2)
+        {
+            int score = getPlayerTwoScore() + 1;
+            setPlayerTwoScore(score);
+        }
+
+        checkerBoardUI.updateScoresOnBoard();
+
+    }
     public boolean isDiagonalMomentAllowed(PanelCoordinate checkerFrom, PanelCoordinate checkerTo, int playerId, boolean isKing)
     {
         if ( checkerFrom.getRow() == checkerTo.getRow() )
@@ -77,11 +114,13 @@ public class MovementHelper {
                 if ( boardPanelPosition1 != null  && boardPanelPosition1.getPlayer() != null  && boardPanelPosition1.getPlayer().getPlayerId() == 2 )
                 {
                     makeOpponentPieceToDisappear(boardPanelPosition1);
+                    playerScoreTracker(playerId);
                     return true;
                 }
                 else if ( boardPanelPosition2 != null  && boardPanelPosition2.getPlayer() !=  null && boardPanelPosition2.getPlayer().getPlayerId() == 2 )
                 {
                     makeOpponentPieceToDisappear(boardPanelPosition2);
+                    playerScoreTracker(playerId);
                     return true;
                 }
             }
@@ -113,11 +152,13 @@ public class MovementHelper {
                     if ( boardPanelPosition1 != null  && boardPanelPosition1.getPlayer() != null && boardPanelPosition1.getPlayer().getPlayerId() == 2 )
                     {
                         makeOpponentPieceToDisappear(boardPanelPosition1);
+                        playerScoreTracker(playerId);
                         return true;
                     }
                     if ( boardPanelPosition2 != null  && boardPanelPosition2.getPlayer() != null && boardPanelPosition2.getPlayer().getPlayerId() == 2 )
                     {
                         makeOpponentPieceToDisappear(boardPanelPosition2);
+                        playerScoreTracker(playerId);
                         return true;
                     }
                 }
@@ -152,11 +193,13 @@ public class MovementHelper {
                 if ( boardPanelPosition1 != null  && boardPanelPosition1.getPlayer() != null && boardPanelPosition1.getPlayer().getPlayerId() == 1 )
                 {
                     makeOpponentPieceToDisappear(boardPanelPosition1);
+                    playerScoreTracker(playerId);
                     return true;
                 }
                 if ( boardPanelPosition2 != null  && boardPanelPosition2.getPlayer() != null && boardPanelPosition2.getPlayer().getPlayerId() == 1 )
                 {
                     makeOpponentPieceToDisappear(boardPanelPosition2);
+                    playerScoreTracker(playerId);
                     return true;
                 }
             }
@@ -187,11 +230,13 @@ public class MovementHelper {
                     if ( boardPanelPosition1 != null  && boardPanelPosition1.getPlayer() != null  && boardPanelPosition1.getPlayer().getPlayerId() == 1 )
                     {
                         makeOpponentPieceToDisappear(boardPanelPosition1);
+                        playerScoreTracker(playerId);
                         return true;
                     }
                     else if ( boardPanelPosition2 != null  && boardPanelPosition2.getPlayer() !=  null && boardPanelPosition2.getPlayer().getPlayerId() == 1 )
                     {
                         makeOpponentPieceToDisappear(boardPanelPosition2);
+                        playerScoreTracker(playerId);
                         return true;
                     }
                 }
