@@ -88,8 +88,8 @@ public class CheckerBoardUI extends JPanel  {
 
     public void updateScoresOnBoard()
     {
-        playerOneScoreField.setText("Score : "+String.valueOf(movementHelper.getPlayerOneScore()));
-        playerTwoScoreField.setText("Score : "+String.valueOf(movementHelper.getPlayerTwoScore()));
+        playerOneScoreField.setText("Score : "+ playerOne.getScore());
+        playerTwoScoreField.setText("Score : "+ playerTwo.getScore());
     }
 
     public void initializePlayers(String playersNames)
@@ -108,7 +108,7 @@ public class CheckerBoardUI extends JPanel  {
         label2.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
 
-        JLabel name = new JLabel("Winner : " + playerWonName);
+        JLabel name = new JLabel("Winner : " + playerWonName + " With score : ");
         name.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
         JFrame f=new JFrame("Game result");//creating instance of JFrame
