@@ -2,10 +2,7 @@ package edu.umkc.group11.client;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -13,7 +10,7 @@ import java.util.List;
 public class WelcomeScreen {
 
     public  String current_user;
-    private void StartGameMethod() {
+    public void StartGameMethod() {
 
         JFrame f=new JFrame("Checkers game application");//creating instance of JFrame
         f.setBounds(10, 10, 370, 600);
@@ -21,13 +18,19 @@ public class WelcomeScreen {
         JButton b=new JButton("Start Game");//creating instance of JButton
         JButton exit_Button=new JButton("Exit Game");//creating instance of JButton
         JButton results_Button=new JButton("Show results");//creating instance of JButton
+        JButton userHistory=new JButton("Search my scores");//creating instance of JButton
+        JTextField textfieldName = new JTextField("",10);
         b.setBounds(130,100,100, 40);//x axis, y axis, width, height
         exit_Button.setBounds(130,200,100, 40);
         results_Button.setBounds(130,300,100, 40);
+        userHistory.setBounds(20,400,200,40);
+        textfieldName.setBounds(250,400,100,40);
         f.add(b);//adding button in JFrame
         f.add(exit_Button);
         f.add(results_Button);
-        f.setSize(400,500);//400 width and 500 height
+        f.add(textfieldName);
+        f.add(userHistory);
+        f.setSize(400,600);//400 width and 500 height
         f.setLayout(null);//using no layout managers
         f.setVisible(true);//making the frame visible
 
@@ -50,6 +53,12 @@ public class WelcomeScreen {
 
         });
 
+        userHistory.addActionListener(e ->
+        {
+            String score =  filterOneUsersScore(textfieldName.getText());
+            JOptionPane.showMessageDialog(f, score);
+        });
+
         exit_Button.addActionListener(e-> {
                     f.dispose();
                     JOptionPane.showMessageDialog(f,
@@ -59,6 +68,25 @@ public class WelcomeScreen {
         );
     }
 
+    public String filterOneUsersScore(String text)
+    {
+        String res = "";
+        try(BufferedReader br = new BufferedReader(new FileReader("src/main/java/edu/umkc/group11/client/ScoreRecord.txt"))) {
+            for(String line; (line = br.readLine()) != null; ) {
+               if(line.contains(text.toLowerCase()))
+               {
+                   res += line+"\n";
+               }
+            }
+            // line is not visible here.
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return res;
+    }
     private String showresults() throws IOException {
 
         File yourFile = new File("src/main/java/edu/umkc/group11/client/ScoreRecord.txt");
