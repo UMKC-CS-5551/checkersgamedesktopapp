@@ -1,6 +1,7 @@
 package edu.umkc.group11.screen;
 
 
+import edu.umkc.group11.client.WelcomeScreen;
 import edu.umkc.group11.model.BoardPanel;
 import edu.umkc.group11.model.MovementHelper;
 import edu.umkc.group11.model.PanelCoordinate;
@@ -66,7 +67,7 @@ public class CheckerBoardUI extends JPanel  {
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
             }
-            displayExitGameWindow(playerTwo.getName());
+            displayExitGameWindow(playerTwo);
         });
 
         player2NoMoves.addActionListener(e ->
@@ -76,7 +77,7 @@ public class CheckerBoardUI extends JPanel  {
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
             }
-            displayExitGameWindow(playerOne.getName());
+            displayExitGameWindow(playerOne);
         });
         exitButton.addActionListener(e ->
         {
@@ -99,7 +100,7 @@ public class CheckerBoardUI extends JPanel  {
         playerTwo = new Player(2,player_names[1]);
     }
 
-    public void displayExitGameWindow(String playerWonName)
+    public void displayExitGameWindow(Player playerWon)
     {
         JLabel label1 = new JLabel("Opposite player has ended the game");
         label1.setFont(new Font("Times New Roman", Font.BOLD, 15));
@@ -107,8 +108,8 @@ public class CheckerBoardUI extends JPanel  {
         JLabel label2 = new JLabel("because of no moves left");
         label2.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
-
-        JLabel name = new JLabel("Winner : " + playerWonName + " With score : ");
+        //
+        JLabel name = new JLabel("Winner : " + playerWon.getName() + "  with score : " + playerWon.getScore());
         name.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
         JFrame f=new JFrame("Game result");//creating instance of JFrame
@@ -131,7 +132,9 @@ public class CheckerBoardUI extends JPanel  {
         submitButton.addActionListener(e ->
         {
             f.dispose();
-
+            String[] s = {};
+            jMasterPanel.removeAll();
+            WelcomeScreen.main(s);
         });
     }
 
