@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="569301d0-6f27-4afc-8c22-4bb20bbc64d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/GamePlayUtilTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/GamePlayUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/GamePlayUtilTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +40,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GamePlayUtilTest.resetOtherPanelsAndButtonsTest">
+  <component name="RunManager" selected="JUnit.GamePlayUtilTest.resetOtherPanelsAndButtonsTestPlayerId0">
     <configuration name="AppTest.buttonClickTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="checkers-game-desktop-app" />
       <extension name="coverage">
@@ -89,8 +89,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GamePlayUtilTest.resetOtherPanelsAndButtonsTestNullPlayer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="checkers-game-desktop-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.umkc.group11.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.umkc.group11" />
+      <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.GamePlayUtilTest" />
+      <option name="METHOD_NAME" value="resetOtherPanelsAndButtonsTestNullPlayer" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GamePlayUtilTest.resetOtherPanelsAndButtonsTestPlayerId0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="checkers-game-desktop-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.umkc.group11.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.umkc.group11" />
+      <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.GamePlayUtilTest" />
+      <option name="METHOD_NAME" value="resetOtherPanelsAndButtonsTestPlayerId0" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GamePlayUtilTest.resetOtherPanelsAndButtonsTestPlayerId0" />
+        <item itemvalue="JUnit.GamePlayUtilTest.resetOtherPanelsAndButtonsTestNullPlayer" />
         <item itemvalue="JUnit.GamePlayUtilTest.resetOtherPanelsAndButtonsTest" />
         <item itemvalue="JUnit.AppTest.buttonClickTest" />
         <item itemvalue="JUnit.AppTest.buttonClickTest2" />
@@ -107,7 +141,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1636693926912</updated>
-      <workItem from="1636693930359" duration="6622000" />
+      <workItem from="1636693930359" duration="6906000" />
     </task>
     <servers />
   </component>
