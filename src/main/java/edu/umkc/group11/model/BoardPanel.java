@@ -20,6 +20,11 @@ public class BoardPanel extends JPanel {
     private CheckerBoardUI checkerBoardUI;
     private int index;
     private PanelCoordinate panelCoordinate;
+
+    public MovementHelper getMovementHelper() {
+        return movementHelper;
+    }
+
     private MovementHelper movementHelper;
 
     public void resetButtonProperties()
