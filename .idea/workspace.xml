@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="569301d0-6f27-4afc-8c22-4bb20bbc64d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/BoardPanelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/BoardPanelTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +82,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1636693926912</updated>
-      <workItem from="1636693930359" duration="2656000" />
+      <workItem from="1636693930359" duration="3497000" />
     </task>
     <servers />
   </component>
