@@ -54,7 +54,26 @@ public class AppTest
         checkerBoardUI.getBlackButtons()[9].getButton().doClick();
         assertTrue(checkerBoardUI.getBlackButtons()[9].isActivated());
         assertTrue(checkerBoardUI.getBlackButtons()[9].getButton().getBackground().equals(Color.CYAN));
+        checkerBoardUI.getBlackButtons()[13].getButton().doClick();
+        assertTrue(checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,1)).getPlayer().getPlayerId() == 1);
+        assertFalse(checkerBoardUI.getJRadioButtonPlayer1().isEnabled());
+        assertTrue(checkerBoardUI.getJRadioButtonPlayer2().isSelected());
+
     }
 
+    @Test
+    public void buttonClickTest2()
+    {
+        String playersNames = "PLayer1,Player2";
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI(playersNames);
+        checkerBoardUI.getJRadioButtonPlayer2().doClick();
+        checkerBoardUI.getBlackButtons()[21].getButton().doClick();
+        assertTrue(checkerBoardUI.getBlackButtons()[21].isActivated());
+        assertTrue(checkerBoardUI.getBlackButtons()[21].getButton().getBackground().equals(Color.MAGENTA));
+        checkerBoardUI.getBlackButtons()[17].getButton().doClick();
+        assertTrue(checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,1)).getPlayer().getPlayerId() == 2);
+        assertFalse(checkerBoardUI.getJRadioButtonPlayer2().isEnabled());
+        assertTrue(checkerBoardUI.getJRadioButtonPlayer1().isSelected());
+    }
 
 }

@@ -1,37 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92cfd7dd-4693-40af-a71c-25f01236b524" name="Default Changelist" comment="" />
+    <list default="true" id="569301d0-6f27-4afc-8c22-4bb20bbc64d6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/BoardPanelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/BoardPanelTest.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Enum" />
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="204FX0Jl8riFPG1izBStNDqb5T8" />
+  <component name="ProjectId" id="20nx09e4VtEaFeo5lBdn627p6Wl" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/edu/umkc/group11" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../chGame/checkersgamedesktopapp" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="edu.umkc.group11.screen" />
-      <recent name="group11" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\appDev\draughts\checkergame\src\main\resources" />
-      <recent name="C:\appDev\draughts\checkergame\src\main\java" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -45,63 +38,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.WelcomeScreen">
-    <configuration name="PlayCheckersGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.client.PlayCheckersGame" />
-      <module name="checkergame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.umkc.group11.client.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TEST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.client.TEST" />
-      <module name="checkergame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.umkc.group11.client.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WelcomeScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.client.WelcomeScreen" />
-      <module name="checkergame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.umkc.group11.client.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="checkergame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.umkc.group11.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.umkc.group11" />
-      <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.AppTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.AppTest.buttonClickTest">
     <configuration name="AppTest.buttonClickTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="checkergame" />
+      <module name="checkers-game-desktop-app" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="edu.umkc.group11.*" />
@@ -116,13 +55,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AppTest.buttonClickTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="checkers-game-desktop-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.umkc.group11.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.umkc.group11" />
+      <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.AppTest" />
+      <option name="METHOD_NAME" value="buttonClickTest2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.WelcomeScreen" />
-        <item itemvalue="Application.PlayCheckersGame" />
         <item itemvalue="JUnit.AppTest.buttonClickTest" />
-        <item itemvalue="JUnit.AppTest" />
-        <item itemvalue="Application.TEST" />
+        <item itemvalue="JUnit.AppTest.buttonClickTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -131,208 +83,27 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="92cfd7dd-4693-40af-a71c-25f01236b524" name="Default Changelist" comment="" />
-      <created>1635295988665</created>
+      <changelist id="569301d0-6f27-4afc-8c22-4bb20bbc64d6" name="Default Changelist" comment="" />
+      <created>1636693926912</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1635295988665</updated>
-      <workItem from="1635295992633" duration="33267000" />
-      <workItem from="1635379244315" duration="26184000" />
-      <workItem from="1635484279989" duration="1536000" />
-      <workItem from="1635626765604" duration="660000" />
-      <workItem from="1635690001189" duration="7301000" />
-      <workItem from="1636034841524" duration="31382000" />
-      <workItem from="1636211008080" duration="5259000" />
+      <updated>1636693926912</updated>
+      <workItem from="1636693930359" duration="2656000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>145</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>146</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>147</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>149</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>152</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>148</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>151</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>156</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>157</line>
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>154</line>
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="85" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="87" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>85</line>
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="92" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="94" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>118</line>
-          <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="96" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="98" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>108</line>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>116</line>
-          <option name="timeStamp" value="100" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="101" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java</url>
-          <line>186</line>
-          <option name="timeStamp" value="103" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java</url>
-          <line>188</line>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java</url>
-          <line>198</line>
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java</url>
-          <line>193</line>
-          <option name="timeStamp" value="106" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="109" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>160</line>
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/checkergame$PlayCheckersGame.ic" NAME="PlayCheckersGame Coverage Results" MODIFIED="1636062029521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>edu.umkc.group11.client.*</FILTER>
-    </SUITE>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

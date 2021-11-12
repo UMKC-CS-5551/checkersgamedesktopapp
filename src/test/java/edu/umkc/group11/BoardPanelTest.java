@@ -4,14 +4,10 @@ import edu.umkc.group11.model.BoardPanel;
 import edu.umkc.group11.model.Player;
 import edu.umkc.group11.screen.CheckerBoardUI;
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
-import org.mockito.Mock;
 
 import java.awt.*;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 public class BoardPanelTest {
 

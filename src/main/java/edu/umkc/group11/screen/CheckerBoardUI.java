@@ -282,14 +282,10 @@ public class CheckerBoardUI extends JPanel  {
                     blackButtons[4 * i + j].setPanelCoordinate(new PanelCoordinate(i,j));
                     if ( i <= 2)
                     {
-                        blackButtons[4 * i + j].setXpos(i);
-                        blackButtons[4 * i + j].setYpos(j);
                         blackButtons[4 * i + j].setPlayer(new Player(1, true));
                     }
                     else if ( i >= 5 )
                     {
-                        blackButtons[4 * i + j].setXpos(i);
-                        blackButtons[4 * i + j].setYpos(j);
                         blackButtons[4 * i + j].setPlayer(new Player(2, true));
                     }
                     panel.add(blackButtons[4 * i + j]);
@@ -305,14 +301,10 @@ public class CheckerBoardUI extends JPanel  {
 
                     if ( i <= 1)
                     {
-                        blackButtons[4 * i + j].setXpos(i);
-                        blackButtons[4 * i + j].setYpos(j);
                         blackButtons[4 * i + j].setPlayer(new Player(1,true));
                     }
                     else if (  i >= 5 )
                     {
-                        blackButtons[4 * i + j].setXpos(i);
-                        blackButtons[4 * i + j].setYpos(j);
                         blackButtons[4 * i + j].setPlayer(new Player(2, true));
                     }
 

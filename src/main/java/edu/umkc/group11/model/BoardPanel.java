@@ -11,8 +11,6 @@ import java.awt.event.ActionListener;
 
 public class BoardPanel extends JPanel {
 
-    private int xpos;
-    private int ypos;
     private boolean activated;
     private JButton button;
     private Player player;
@@ -116,21 +114,7 @@ public class BoardPanel extends JPanel {
         }
         util.resetOtherPanelsAndButtons(checkerBoardUI, button);
     }
-    public int getXpos() {
-        return xpos;
-    }
 
-    public void setXpos(int xpos) {
-        this.xpos = xpos;
-    }
-
-    public int getYpos() {
-        return ypos;
-    }
-
-    public void setYpos(int ypos) {
-        this.ypos = ypos;
-    }
 
     public boolean isActivated() {
         return activated;
