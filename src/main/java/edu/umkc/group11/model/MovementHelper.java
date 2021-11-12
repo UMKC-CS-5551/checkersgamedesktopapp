@@ -73,9 +73,20 @@ public class MovementHelper {
         {
             if ( checkerFrom.getRow() - checkerTo.getRow() == -1)
             {
-                if ( (checkerFrom.getCol() - checkerTo.getCol() )<= 1 )
+                if ( checkerFrom.getRow() % 2 == 0 )
                 {
-                    return true;
+                    if ( (checkerFrom.getCol() - checkerTo.getCol() )== 0 || (checkerFrom.getCol() - checkerTo.getCol() )  == 1)
+                    {
+                        return true;
+                    }
+
+                }
+                else if ( checkerFrom.getRow() % 2 != 0  )
+                {
+                    if ( (checkerFrom.getCol() - checkerTo.getCol() )== 0 || (checkerFrom.getCol() - checkerTo.getCol() )  == -1)
+                    {
+                        return true;
+                    }
                 }
             }
             else if ( (checkerFrom.getRow() - checkerTo.getRow()) == -2 )
@@ -110,7 +121,7 @@ public class MovementHelper {
             {
                 if ( checkerFrom.getRow() - checkerTo.getRow() == 1)
                 {
-                    if ( (checkerFrom.getCol() - checkerTo.getCol() )<= 1 )
+                    if ( (checkerFrom.getCol() - checkerTo.getCol() ) == 0 ||  (checkerFrom.getCol() - checkerTo.getCol() ) == 1)
                     {
                         return true;
                     }
@@ -151,9 +162,20 @@ public class MovementHelper {
         {
             if ( checkerFrom.getRow() - checkerTo.getRow() == 1)
             {
-                if ( (checkerFrom.getCol() - checkerTo.getCol() )<= 1 )
+                if ( checkerFrom.getRow() % 2 == 0 )
                 {
-                    return true;
+                    if ( (checkerFrom.getCol() - checkerTo.getCol() )== 0 || (checkerFrom.getCol() - checkerTo.getCol() )  == 1)
+                    {
+                        return true;
+                    }
+
+                }
+                else if ( checkerFrom.getRow() % 2 != 0  )
+                {
+                    if ( (checkerFrom.getCol() - checkerTo.getCol() )== 0 || (checkerFrom.getCol() - checkerTo.getCol() )  == -1)
+                    {
+                        return true;
+                    }
                 }
             }
             else if ( (checkerFrom.getRow() - checkerTo.getRow()) == 2 )
@@ -189,7 +211,7 @@ public class MovementHelper {
             {
                 if ( checkerFrom.getRow() - checkerTo.getRow() == -1)
                 {
-                    if ( (checkerFrom.getCol() - checkerTo.getCol() )<= 1 )
+                    if ( (checkerFrom.getCol() - checkerTo.getCol() ) == 0 ||  (checkerFrom.getCol() - checkerTo.getCol() ) == 1 )
                     {
                         return true;
                     }

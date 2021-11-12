@@ -11,8 +11,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 
 public class MovementHelperTest {
@@ -439,6 +438,57 @@ public class MovementHelperTest {
 
         boolean res = movementHelper.isDiagonalMomentAllowed(checkerFrom,checkerTo,2,false);
         assertEquals(false,res);
+    }
+
+    @Test
+    public void happyJumpTestPlayerOneKing()
+    {
+        String playersNames = "PLayer1,Player2";
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI(playersNames);
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,1)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(5,2)).setPlayer(null);
+        MovementHelper movementHelper = new MovementHelper(checkerBoardUI);
+
+        boolean result = movementHelper.isDiagonalMomentAllowed(new PanelCoordinate(3,1), new PanelCoordinate(5,2),1,true);
+        assertTrue(result);
+    }
+
+    @Test
+    public void happyJumpTestPlayerOneKingReverse()
+    {
+        String playersNames = "PLayer1,Player2";
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI(playersNames);
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,1)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(2,1)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(1,0)).setPlayer(null);
+        MovementHelper movementHelper = new MovementHelper(checkerBoardUI);
+
+        boolean result = movementHelper.isDiagonalMomentAllowed(new PanelCoordinate(3,1), new PanelCoordinate(1,0),1,true);
+        assertTrue(result);
+    }
+    @Test
+    public void happyJumpTestPlayerTwoKingReverse()
+    {
+        String playersNames = "PLayer1,Player2";
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI(playersNames);
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,1)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,2)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(5,2)).setPlayer(null);
+        MovementHelper movementHelper = new MovementHelper(checkerBoardUI);
+
+        boolean result = movementHelper.isDiagonalMomentAllowed(new PanelCoordinate(3,1), new PanelCoordinate(5,2),2,true);
+        assertTrue(result);
+    }
+
+    @Test
+    public void kingConversionTest()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        boardPanel.setPlayer(new Player(1, true));
+        checkerBoardUI.getMovementHelper().convertToKing(boardPanel,new PanelCoordinate(7,1));
+        assertEquals(true, boardPanel.getPlayer().isKing());
     }
 
 
