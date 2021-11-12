@@ -11,25 +11,7 @@ public class MovementHelper {
 
     private Map<String, BoardPanel> movementTrajectory;
     private CheckerBoardUI checkerBoardUI;
-    int playerOneScore=0;
-    int playerTwoScore=0;
 
-
-    public int getPlayerOneScore() {
-        return playerOneScore;
-    }
-
-    public void setPlayerOneScore(int playerOneScore) {
-        this.playerOneScore = playerOneScore;
-    }
-
-    public int getPlayerTwoScore() {
-        return playerTwoScore;
-    }
-
-    public void setPlayerTwoScore(int playerTwoScore) {
-        this.playerTwoScore = playerTwoScore;
-    }
 
     public MovementHelper(CheckerBoardUI checkerBoardUI)
     {
@@ -68,14 +50,14 @@ public class MovementHelper {
     {
         if(playerId == 1)
         {
-            int score = getPlayerOneScore() + 1;
-            setPlayerOneScore(score);
+            int score =  checkerBoardUI.getPlayerOne().getScore() + 1;
+            checkerBoardUI.getPlayerOne().setScore(score);
         }
 
         if(playerId == 2)
         {
-            int score = getPlayerTwoScore() + 1;
-            setPlayerTwoScore(score);
+            int score = checkerBoardUI.getPlayerTwo().getScore() + 1;
+            checkerBoardUI.getPlayerTwo().setScore(score);
         }
 
         checkerBoardUI.updateScoresOnBoard();

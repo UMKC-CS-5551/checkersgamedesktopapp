@@ -1,6 +1,7 @@
 package edu.umkc.group11.screen;
 
 
+import edu.umkc.group11.client.WelcomeScreen;
 import edu.umkc.group11.model.BoardPanel;
 import edu.umkc.group11.model.MovementHelper;
 import edu.umkc.group11.model.PanelCoordinate;
@@ -8,8 +9,9 @@ import edu.umkc.group11.model.Player;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.awt.event.WindowEvent;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class CheckerBoardUI extends JPanel  {
@@ -63,24 +65,24 @@ public class CheckerBoardUI extends JPanel  {
         {
             try {
                 recordHighScore(playerTwo.getName());
-            } catch (FileNotFoundException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            displayExitGameWindow(playerTwo.getName());
+            displayExitGameWindow(playerTwo);
         });
 
         player2NoMoves.addActionListener(e ->
         {
             try {
                 recordHighScore(playerOne.getName());
-            } catch (FileNotFoundException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            displayExitGameWindow(playerOne.getName());
+            displayExitGameWindow(playerOne);
         });
         exitButton.addActionListener(e ->
         {
-            System.exit(0);
+           System.exit(0);
         });
 
     }
@@ -88,8 +90,8 @@ public class CheckerBoardUI extends JPanel  {
 
     public void updateScoresOnBoard()
     {
-        playerOneScoreField.setText("Score : "+String.valueOf(movementHelper.getPlayerOneScore()));
-        playerTwoScoreField.setText("Score : "+String.valueOf(movementHelper.getPlayerTwoScore()));
+        playerOneScoreField.setText("Score : "+ playerOne.getScore());
+        playerTwoScoreField.setText("Score : "+ playerTwo.getScore());
     }
 
     public void initializePlayers(String playersNames)
@@ -99,7 +101,7 @@ public class CheckerBoardUI extends JPanel  {
         playerTwo = new Player(2,player_names[1]);
     }
 
-    public void displayExitGameWindow(String playerWonName)
+    public void displayExitGameWindow(Player playerWon)
     {
         JLabel label1 = new JLabel("Opposite player has ended the game");
         label1.setFont(new Font("Times New Roman", Font.BOLD, 15));
@@ -107,43 +109,58 @@ public class CheckerBoardUI extends JPanel  {
         JLabel label2 = new JLabel("because of no moves left");
         label2.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
-
-        JLabel name = new JLabel("Winner : " + playerWonName);
+        //
+        JLabel name = new JLabel("Winner : " + playerWon.getName() + "  with score : " + playerWon.getScore());
         name.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
         JFrame f=new JFrame("Game result");//creating instance of JFrame
         f.setBounds(50, 50, 370, 600);
-        JButton submitButton=new JButton("Ok");//creating instance of JButton
+        JButton submitButton=new JButton("End game");//creating instance of JButton
         submitButton.setBackground(Color.green);
+
+        JButton restartGame=new JButton("New game");//creating instance of JButton
+        restartGame.setBackground(Color.green);
 
         label1.setBounds(90,30,300, 140);
         label2.setBounds(100,50,300, 140);
         name.setBounds(120,100,300, 140);//x axis, y axis, width, height
         submitButton.setBounds(130,300,100, 40);
+        restartGame.setBounds(230,300,100, 40);
 
         f.add(label1);
         f.add(label2);
         f.add(name);//adding button in JFrame
         f.add(submitButton);
+        f.add(restartGame);
         f.setSize(600,500);//400 width and 500 height
         f.setLayout(null);//using no layout managers
         f.setVisible(true);//making the frame visibl
         submitButton.addActionListener(e ->
         {
+            exitButton.doClick();
             f.dispose();
-
+        });
+        restartGame.addActionListener(e ->
+        {
+            Window w = SwingUtilities.getWindowAncestor(CheckerBoardUI.this);
+            w.setVisible(false);
+            jMasterPanel.dispatchEvent(new WindowEvent(w, WindowEvent.WINDOW_CLOSING));
+            f.dispose();
+            restartApplication();
         });
     }
 
-
-    public void recordHighScore(String playerWonName) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter("src/main/java/edu/umkc/group11/client/ScoreRecord.txt");
-        writer.print("");
-        writer.print("Date Played : " + java.time.LocalDateTime.now());
-        writer.print("  Winner : " + playerWonName);
-        writer.close();
+    public void restartApplication()
+    {
+        new WelcomeScreen().StartGameMethod();
+    }
 
 
+    public void recordHighScore(String playerWonName) throws IOException {
+        File file = new File("src/main/java/edu/umkc/group11/client/ScoreRecord.txt");
+        FileWriter fr = new FileWriter(file, true);
+        fr.write("\nDate Played : " + java.time.LocalDateTime.now() + "  Winner : " + playerWonName.toLowerCase());
+        fr.close();
     }
 
     public ButtonGroup getButtonGroupPlayers()
