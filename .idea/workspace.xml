@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="569301d0-6f27-4afc-8c22-4bb20bbc64d6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/GamePlayUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/GamePlayUtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/MovementHelperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/MovementHelperTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +40,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GamePlayUtilTest.resetOtherPanelsAndButtonsTestPlayerId0">
+  <component name="RunManager" selected="JUnit.MovementHelperTest.notAllowedToJumpTestPlayerOne">
     <configuration name="AppTest.buttonClickTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="checkers-game-desktop-app" />
       <extension name="coverage">
@@ -52,22 +52,6 @@
       <option name="PACKAGE_NAME" value="edu.umkc.group11" />
       <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.AppTest" />
       <option name="METHOD_NAME" value="buttonClickTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppTest.buttonClickTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="checkers-game-desktop-app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.umkc.group11.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.umkc.group11" />
-      <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.AppTest" />
-      <option name="METHOD_NAME" value="buttonClickTest2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -121,13 +105,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MovementHelperTest.notAllowedToJumpTestPlayerOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="checkers-game-desktop-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.umkc.group11.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.umkc.group11" />
+      <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.MovementHelperTest" />
+      <option name="METHOD_NAME" value="notAllowedToJumpTestPlayerOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MovementHelperTest.notAllowedToJumpTestPlayerOne" />
         <item itemvalue="JUnit.GamePlayUtilTest.resetOtherPanelsAndButtonsTestPlayerId0" />
         <item itemvalue="JUnit.GamePlayUtilTest.resetOtherPanelsAndButtonsTestNullPlayer" />
         <item itemvalue="JUnit.GamePlayUtilTest.resetOtherPanelsAndButtonsTest" />
         <item itemvalue="JUnit.AppTest.buttonClickTest" />
-        <item itemvalue="JUnit.AppTest.buttonClickTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -141,7 +141,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1636693926912</updated>
-      <workItem from="1636693930359" duration="6906000" />
+      <workItem from="1636693930359" duration="12411000" />
     </task>
     <servers />
   </component>
@@ -181,6 +181,46 @@
           <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/GamePlayUtil.java</url>
           <line>26</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/edu/umkc/group11/MovementHelperTest.java</url>
+          <line>518</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

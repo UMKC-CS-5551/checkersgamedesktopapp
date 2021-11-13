@@ -493,4 +493,31 @@ public class MovementHelperTest {
 
 
 
+    @Test
+    public void happyJumpTestPlayerOne()
+    {
+        String playersNames = "PLayer1,Player2";
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI(playersNames);
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,1)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(5,2)).setPlayer(null);
+        MovementHelper movementHelper = new MovementHelper(checkerBoardUI);
+
+        boolean result = movementHelper.isDiagonalMomentAllowed(new PanelCoordinate(3,1), new PanelCoordinate(5,2),1,false);
+        assertTrue(result);
+    }
+    @Test
+    public void notAllowedToJumpTestPlayerOne()
+    {
+        String playersNames = "PLayer1,Player2";
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI(playersNames);
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,1)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(5,2)).setPlayer(null);
+        MovementHelper movementHelper = new MovementHelper(checkerBoardUI);
+
+        boolean result = movementHelper.isDiagonalMomentAllowed(new PanelCoordinate(3,1), new PanelCoordinate(6,3),1,false);
+        assertFalse(result);
+    }
+
 }
