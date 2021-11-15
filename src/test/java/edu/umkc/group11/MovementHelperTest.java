@@ -520,4 +520,123 @@ public class MovementHelperTest {
         assertFalse(result);
     }
 
+    @Test
+    public void canNotJumpMoreTestHappyPlayerOneBecauseThereWasNoJump()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(2,2)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,3)).setPlayer(null);
+
+        assertFalse(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),1,false,false));
+
+    }
+    @Test
+    public void canJumpMoreTestHappyPlayerOne()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(2,2)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,3)).setPlayer(null);
+
+        assertTrue(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),1,false,true));
+
+    }
+    @Test
+    public void canJumpMoreTestHappyPlayerOneKing()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(2,2)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,3)).setPlayer(null);
+
+        assertTrue(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),1,true,true));
+    }
+    @Test
+    public void canNotJumpMoreTestHappyPlayerOne()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(2,2)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,3)).setPlayer(new Player(2, true));
+
+        assertFalse(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),1,false,true));
+    }
+    @Test
+    public void canJumpMoreTestHappyPlayerTwo()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(2,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(1,1)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(0,1)).setPlayer(null);
+
+        assertTrue(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),2,false,true));
+
+    }
+    @Test
+    public void canJumpMoreTestHappyPlayerOneKingReverse()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(2,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(1,1)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(0,1)).setPlayer(null);
+
+        assertTrue(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),2,true,true));
+
+    }
+    @Test
+    public void canNotJumpMoreTestHappyPlayerTwo()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(2,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(1,1)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(0,1)).setPlayer(new Player(2, true));
+
+        assertFalse(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),2,false,true));
+
+    }
+    @Test
+    public void canJumpMoreTestHappyPlayerOneAlternatePath()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(2,2)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,1)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,1)).setPlayer(null);
+
+        assertTrue(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),1,false,true));
+
+    }
+    @Test
+    public void canNotJumpMoreTestHappyPlayerOneAlternatePath()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(2,2)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,1)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,1)).setPlayer(new Player(2, true));
+
+        assertFalse(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),1,false,true));
+
+    }
+    @Test
+    public void canJumpMoreTestHappyPlayerTwoAlternatePath()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(5,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,3)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,3)).setPlayer(null);
+
+        assertTrue(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(5,2),2,false,true));
+
+    }
+    @Test
+    public void canNotJumpMoreTestHappyPlayerTwoAlternatePath()
+    {
+        CheckerBoardUI checkerBoardUI = new CheckerBoardUI("pl1,pl2");
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(5,2)).setPlayer(new Player(2, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(4,3)).setPlayer(new Player(1, true));
+        checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(3,3)).setPlayer(new Player(1, true));
+
+        assertFalse(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),2,false,true));
+
+    }
 }

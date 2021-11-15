@@ -11,7 +11,7 @@ public class MovementHelper {
 
     private Map<String, BoardPanel> movementTrajectory;
     private CheckerBoardUI checkerBoardUI;
-
+    private boolean jumped;
 
     public MovementHelper(CheckerBoardUI checkerBoardUI)
     {
@@ -108,12 +108,14 @@ public class MovementHelper {
                 {
                     makeOpponentPieceToDisappear(boardPanelPosition1);
                     playerScoreTracker(playerId);
+                    this.jumped = true;
                     return true;
                 }
                 else if ( boardPanelPosition2 != null  && boardPanelPosition2.getPlayer() !=  null && boardPanelPosition2.getPlayer().getPlayerId() == 2 )
                 {
                     makeOpponentPieceToDisappear(boardPanelPosition2);
                     playerScoreTracker(playerId);
+                    this.jumped = true;
                     return true;
                 }
             }
@@ -121,9 +123,20 @@ public class MovementHelper {
             {
                 if ( checkerFrom.getRow() - checkerTo.getRow() == 1)
                 {
-                    if ( (checkerFrom.getCol() - checkerTo.getCol() ) == 0 ||  (checkerFrom.getCol() - checkerTo.getCol() ) == 1)
+                    if ( checkerFrom.getRow() % 2 == 0 )
                     {
-                        return true;
+                        if ( (checkerFrom.getCol() - checkerTo.getCol() )== 0 || (checkerFrom.getCol() - checkerTo.getCol() )  == 1)
+                        {
+                            return true;
+                        }
+
+                    }
+                    else if ( checkerFrom.getRow() % 2 != 0  )
+                    {
+                        if ( (checkerFrom.getCol() - checkerTo.getCol() )== 0 || (checkerFrom.getCol() - checkerTo.getCol() )  == -1)
+                        {
+                            return true;
+                        }
                     }
                 }
                 else if ( (checkerFrom.getRow() - checkerTo.getRow()) == 2 )
@@ -146,12 +159,14 @@ public class MovementHelper {
                     {
                         makeOpponentPieceToDisappear(boardPanelPosition1);
                         playerScoreTracker(playerId);
+                        this.jumped = true;
                         return true;
                     }
                     if ( boardPanelPosition2 != null  && boardPanelPosition2.getPlayer() != null && boardPanelPosition2.getPlayer().getPlayerId() == 2 )
                     {
                         makeOpponentPieceToDisappear(boardPanelPosition2);
                         playerScoreTracker(playerId);
+                        this.jumped = true;
                         return true;
                     }
                 }
@@ -198,12 +213,14 @@ public class MovementHelper {
                 {
                     makeOpponentPieceToDisappear(boardPanelPosition1);
                     playerScoreTracker(playerId);
+                    this.jumped = true;
                     return true;
                 }
                 if ( boardPanelPosition2 != null  && boardPanelPosition2.getPlayer() != null && boardPanelPosition2.getPlayer().getPlayerId() == 1 )
                 {
                     makeOpponentPieceToDisappear(boardPanelPosition2);
                     playerScoreTracker(playerId);
+                    this.jumped = true;
                     return true;
                 }
             }
@@ -235,12 +252,14 @@ public class MovementHelper {
                     {
                         makeOpponentPieceToDisappear(boardPanelPosition1);
                         playerScoreTracker(playerId);
+                        this.jumped = true;
                         return true;
                     }
                     else if ( boardPanelPosition2 != null  && boardPanelPosition2.getPlayer() !=  null && boardPanelPosition2.getPlayer().getPlayerId() == 1 )
                     {
                         makeOpponentPieceToDisappear(boardPanelPosition2);
                         playerScoreTracker(playerId);
+                        this.jumped = true;
                         return true;
                     }
                 }
@@ -295,4 +314,157 @@ public class MovementHelper {
         }
     }
 
+    public boolean canJumpMore(PanelCoordinate panelCoordinate, int playerId, boolean isKing, boolean jumped)
+    {
+        if ( !jumped )
+        {
+            return false;
+        }
+
+        if ( playerId == 1 || ( playerId == 2 && isKing ))
+        {
+            int tempOpponentRow = panelCoordinate.getRow() + 1;
+            int tempTargetRow = panelCoordinate.getRow() + 2;
+            int tmpTargetColPossibility1  = panelCoordinate.getCol() + 1;
+            int tmpTargetColPossibility2  = panelCoordinate.getCol() - 1;
+
+
+            if ( panelCoordinate.getRow() % 2 == 0 )
+            {
+                int tmpOpponentColPossibility1  = panelCoordinate.getCol();
+                int tmpOpponentColPossibility2  = panelCoordinate.getCol() - 1;
+
+                BoardPanel tmpBoardPanelPossibility1 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempOpponentRow,tmpOpponentColPossibility1));
+                BoardPanel tmpBoardPanelPossibility2 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempOpponentRow,tmpOpponentColPossibility2));
+
+                BoardPanel tmpBoardPanelTargetPossibility1 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempTargetRow,tmpTargetColPossibility1));
+                BoardPanel tmpBoardPanelTargetPossibility2 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempTargetRow,tmpTargetColPossibility2));
+
+                if (tmpBoardPanelPossibility1 != null && tmpBoardPanelPossibility1.getPlayer() != null && tmpBoardPanelPossibility1.getPlayer().getPlayerId() == theOtherPlayerId(playerId ))
+                {
+                    if ( tmpBoardPanelTargetPossibility1 != null && (tmpBoardPanelTargetPossibility1.getPlayer() == null || tmpBoardPanelTargetPossibility1.getPlayer().getPlayerId() == 0 ))
+                    {
+                        return true;
+                    }
+                }
+                else if ( tmpBoardPanelPossibility2 != null && (tmpBoardPanelPossibility2.getPlayer() != null && tmpBoardPanelPossibility2.getPlayer().getPlayerId() == theOtherPlayerId(playerId)))
+                {
+                    if ( tmpBoardPanelTargetPossibility2 != null && tmpBoardPanelTargetPossibility2.getPlayer() == null || tmpBoardPanelTargetPossibility2.getPlayer().getPlayerId() == 0 )
+                    {
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                int tmpOpponentColPossibility1  = panelCoordinate.getCol() + 1;
+                int tmpOpponentColPossibility2  = panelCoordinate.getCol();
+
+                BoardPanel tmpBoardPanelPossibility1 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempOpponentRow,tmpOpponentColPossibility1));
+                BoardPanel tmpBoardPanelPossibility2 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempOpponentRow,tmpOpponentColPossibility2));
+
+                BoardPanel tmpBoardPanelTargetPossibility1 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempTargetRow,tmpTargetColPossibility1));
+                BoardPanel tmpBoardPanelTargetPossibility2 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempTargetRow,tmpTargetColPossibility2));
+
+                if ( tmpBoardPanelPossibility1 != null && tmpBoardPanelPossibility1.getPlayer() != null && tmpBoardPanelPossibility1.getPlayer().getPlayerId() == 2)
+                {
+                    if ( tmpBoardPanelTargetPossibility1 != null && (tmpBoardPanelTargetPossibility1.getPlayer() == null || tmpBoardPanelTargetPossibility1.getPlayer().getPlayerId() == 0 ))
+                    {
+                        return true;
+                    }
+                }
+                 if ( tmpBoardPanelPossibility2 != null && tmpBoardPanelPossibility2.getPlayer() != null && tmpBoardPanelPossibility2.getPlayer().getPlayerId() == 2)
+                {
+                    if ( tmpBoardPanelTargetPossibility2 != null && (tmpBoardPanelTargetPossibility2.getPlayer() == null || tmpBoardPanelTargetPossibility2.getPlayer().getPlayerId() == 0 ))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        if ( playerId == 2 || ( playerId == 1 && isKing))
+        {
+            int tempOpponentRow = panelCoordinate.getRow() - 1;
+            int tempTargetRow = panelCoordinate.getRow() - 2;
+            int tmpTargetColPossibility1  = panelCoordinate.getCol() - 1;
+            int tmpTargetColPossibility2  = panelCoordinate.getCol() + 1;
+
+
+            if ( panelCoordinate.getRow() % 2 == 0 )
+            {
+                int tmpOpponentColPossibility1  = panelCoordinate.getCol() - 1;
+                int tmpOpponentColPossibility2  = panelCoordinate.getCol();
+
+                BoardPanel tmpBoardPanelPossibility1 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempOpponentRow,tmpOpponentColPossibility1));
+                BoardPanel tmpBoardPanelPossibility2 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempOpponentRow,tmpOpponentColPossibility2));
+
+                BoardPanel tmpBoardPanelTargetPossibility1 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempTargetRow,tmpTargetColPossibility1));
+                BoardPanel tmpBoardPanelTargetPossibility2 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempTargetRow,tmpTargetColPossibility2));
+
+                if ( tmpBoardPanelPossibility1 != null &&  tmpBoardPanelPossibility1.getPlayer() != null && tmpBoardPanelPossibility1.getPlayer().getPlayerId() == theOtherPlayerId(playerId))
+                {
+                    if ( tmpBoardPanelTargetPossibility1.getPlayer() == null || tmpBoardPanelTargetPossibility1.getPlayer().getPlayerId() == 0 )
+                    {
+                        return true;
+                    }
+                }
+                else if ( tmpBoardPanelPossibility2 != null &&  (tmpBoardPanelPossibility2.getPlayer() != null && tmpBoardPanelPossibility2.getPlayer().getPlayerId() == theOtherPlayerId(playerId)))
+                {
+                    if ( tmpBoardPanelTargetPossibility2.getPlayer() == null || tmpBoardPanelTargetPossibility2.getPlayer().getPlayerId() == 0 )
+                    {
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                int tmpOpponentColPossibility1  = panelCoordinate.getCol();
+                int tmpOpponentColPossibility2  = panelCoordinate.getCol() + 1;
+
+                BoardPanel tmpBoardPanelPossibility1 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempOpponentRow,tmpOpponentColPossibility1));
+                BoardPanel tmpBoardPanelPossibility2 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempOpponentRow,tmpOpponentColPossibility2));
+
+                BoardPanel tmpBoardPanelTargetPossibility1 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempTargetRow,tmpTargetColPossibility1));
+                BoardPanel tmpBoardPanelTargetPossibility2 = this.checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(tempTargetRow,tmpTargetColPossibility2));
+
+                if ( tmpBoardPanelPossibility1 != null && tmpBoardPanelPossibility1.getPlayer() != null && tmpBoardPanelPossibility1.getPlayer().getPlayerId() == theOtherPlayerId(playerId))
+                {
+                    if ( tmpBoardPanelTargetPossibility1 != null && (tmpBoardPanelTargetPossibility1.getPlayer() == null || tmpBoardPanelTargetPossibility1.getPlayer().getPlayerId() == 0 ))
+                    {
+                        return true;
+                    }
+                }
+                else if ( tmpBoardPanelPossibility2 != null && tmpBoardPanelPossibility2.getPlayer() != null && tmpBoardPanelPossibility2.getPlayer().getPlayerId() == theOtherPlayerId(playerId))
+                {
+                    if ( tmpBoardPanelTargetPossibility2 !=null && (tmpBoardPanelTargetPossibility2.getPlayer() == null || tmpBoardPanelTargetPossibility2.getPlayer().getPlayerId() == 0 ))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    int theOtherPlayerId(int playerId)
+    {
+        if ( playerId == 1 )
+        {
+            return 2;
+        }
+        if ( playerId == 2 )
+        {
+            return 1;
+        }
+        return 0;
+    }
+
+    public boolean isJumped() {
+        return jumped;
+    }
+
+    public void setJumped(boolean jumped) {
+        this.jumped = jumped;
+    }
 }

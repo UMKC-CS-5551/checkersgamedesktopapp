@@ -101,15 +101,44 @@ public class BoardPanel extends JPanel {
             }
             checkerBoardUI.getJRadioButtonPlayer1().setEnabled(true);
             checkerBoardUI.getJRadioButtonPlayer2().setEnabled(true);
+            boolean tmpKing = false;
+            if ( this.getPlayer() != null )
+            {
+                tmpKing = this.getPlayer().isKing();
+            }
+
             if (!checkerBoardUI.getPlayerUsageStack().empty() && GameUtils.hasThePlayerGotTurn(checkerBoardUI.getPlayerUsageStack(), "player1")) {
-                checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
-                checkerBoardUI.getJRadioButtonPlayer2().setSelected(true);
-                checkerBoardUI.getJRadioButtonPlayer2().doClick();
+                if ( movementHelper.canJumpMore(this.panelCoordinate,1,tmpKing, movementHelper.isJumped()))
+                {
+                    checkerBoardUI.getJRadioButtonPlayer1().setEnabled(true);
+                    checkerBoardUI.getJRadioButtonPlayer2().setSelected(false);
+                    checkerBoardUI.getJRadioButtonPlayer1().doClick();
+                    checkerBoardUI.getPlayerUsageStack().pop();
+                    movementHelper.setJumped(false);
+                }
+                else {
+                    checkerBoardUI.getJRadioButtonPlayer1().setEnabled(false);
+                    checkerBoardUI.getJRadioButtonPlayer2().setSelected(true);
+                    checkerBoardUI.getJRadioButtonPlayer2().doClick();
+                }
 
             } else if (!checkerBoardUI.getPlayerUsageStack().empty() && GameUtils.hasThePlayerGotTurn(checkerBoardUI.getPlayerUsageStack(), "player2")) {
-                checkerBoardUI.getJRadioButtonPlayer2().setEnabled(false);
-                checkerBoardUI.getJRadioButtonPlayer1().setSelected(true);
-                checkerBoardUI.getJRadioButtonPlayer1().doClick();
+
+                if ( movementHelper.canJumpMore(this.panelCoordinate,2,tmpKing, movementHelper.isJumped()))
+                {
+                    checkerBoardUI.getJRadioButtonPlayer2().setEnabled(true);
+                    checkerBoardUI.getJRadioButtonPlayer1().setSelected(false);
+                    checkerBoardUI.getJRadioButtonPlayer2().doClick();
+                    movementHelper.setJumped(false);
+                    checkerBoardUI.getPlayerUsageStack().pop();
+                }
+                else
+                {
+                    checkerBoardUI.getJRadioButtonPlayer2().setEnabled(false);
+                    checkerBoardUI.getJRadioButtonPlayer1().setSelected(true);
+                    checkerBoardUI.getJRadioButtonPlayer1().doClick();
+                }
+
             }
         }
         util.resetOtherPanelsAndButtons(checkerBoardUI, button);
@@ -185,5 +214,4 @@ public class BoardPanel extends JPanel {
     public int getIndex() {
         return index;
     }
-
 }

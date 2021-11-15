@@ -34,6 +34,7 @@ public class CheckerBoardUI extends JPanel  {
     private JButton exitButton;
     JLabel playerOneScoreField;
     JLabel playerTwoScoreField;
+    private JButton jButtonUnfreezeBoard;
 
     public CheckerBoardUI(String title)
     {
@@ -43,7 +44,7 @@ public class CheckerBoardUI extends JPanel  {
         whiteButtons = new BoardPanel[4 * 8];
         this.add(getJMasterPanel());
         this.movementHelper = new MovementHelper(this);
-        getButtonGroupPlayers().add(getJRadioButtonPlayer1());
+        getButtonGroupPlayers().add((getJRadioButtonPlayer1()));
         getButtonGroupPlayers().add(getJRadioButtonPlayer2());
 
         getJRadioButtonPlayer1().addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +61,26 @@ public class CheckerBoardUI extends JPanel  {
                 playerTwoSelected = true;
             }
         });
+        getjButtonUnfreezeBoard().addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                if ( Math.random() > 0.5 )
+                {
+                    getJRadioButtonPlayer1().setEnabled(false);
+                    getJRadioButtonPlayer2().setSelected(true);
+                    getJRadioButtonPlayer2().doClick();
+                    playerUsageStack = new Stack<>();
+                }
+                else
+                {
+                    getJRadioButtonPlayer2().setEnabled(false);
+                    getJRadioButtonPlayer1().setSelected(true);
+                    getJRadioButtonPlayer1().doClick();
+                    playerUsageStack = new Stack<>();
+                }
+            }
+        });
+
 
         player1NoMoves.addActionListener(e ->
         {
@@ -179,6 +200,7 @@ public class CheckerBoardUI extends JPanel  {
         {
             jTopPanel = new JPanel();
             GridLayout gridLayout = new GridLayout();
+            jTopPanel.add(getjButtonUnfreezeBoard());
             jTopPanel.add(getJRadioButtonPlayer1(), null);
             jTopPanel.add(getPlayerOneScoreField());
             jTopPanel.add(getJRadioButtonPlayer2(), null);
@@ -188,6 +210,16 @@ public class CheckerBoardUI extends JPanel  {
             jTopPanel.add(getExitButton());
         }
         return jTopPanel;
+    }
+
+    public JButton getjButtonUnfreezeBoard()
+    {
+        if ( jButtonUnfreezeBoard == null )
+        {
+            jButtonUnfreezeBoard = new JButton();
+            jButtonUnfreezeBoard.setText("Unfreeze");
+        }
+        return jButtonUnfreezeBoard;
     }
 
     public JLabel getPlayerOneScoreField()
