@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="569301d0-6f27-4afc-8c22-4bb20bbc64d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/MovementHelperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/umkc/group11/MovementHelperTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="569301d0-6f27-4afc-8c22-4bb20bbc64d6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +136,7 @@
       <option name="presentableId" value="Default" />
       <updated>1636693926912</updated>
       <workItem from="1636693930359" duration="12411000" />
-      <workItem from="1636869226922" duration="13121000" />
+      <workItem from="1636869226922" duration="13777000" />
     </task>
     <servers />
   </component>
