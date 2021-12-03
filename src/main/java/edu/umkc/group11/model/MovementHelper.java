@@ -4,8 +4,10 @@ import edu.umkc.group11.client.GamePlayUtil;
 import edu.umkc.group11.screen.CheckerBoardUI;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class MovementHelper {
 
@@ -459,6 +461,79 @@ public class MovementHelper {
         }
         return 0;
     }
+
+    public MovePayLoad getSelectedBoardPanelPlayerToMove(int playerId)
+    {
+        Map<BoardPanel, java.util.List<MovePayLoad>> boardPanelPlayerMap = getMovementOptionsForThePlayerPanel(playerId);
+        for ( BoardPanel bp: boardPanelPlayerMap.keySet())
+        {
+            java.util.List<MovePayLoad> tmpMovePayLoadList = boardPanelPlayerMap.get(bp);
+            for (MovePayLoad mpl: tmpMovePayLoadList)
+            {
+                if ( mpl.isJump())
+                {
+                    return mpl;
+                }
+            }
+            for (MovePayLoad mpl: tmpMovePayLoadList)
+            {
+                if ( !mpl.isJump())
+                {
+                    return mpl;
+                }
+            }
+
+        }
+        return  null;
+    }
+
+    public Map<BoardPanel, java.util.List<MovePayLoad>> getMovementOptionsForThePlayerPanel(int playerId)
+    {
+        Map<BoardPanel, java.util.List<MovePayLoad>> movementMap = new HashMap<>();
+        for ( BoardPanel boardPanel: checkerBoardUI.getBlackButtons())
+        {
+            java.util.List<MovePayLoad> tmpListMovements = new ArrayList<>();
+            if ( boardPanel.getPlayer() != null && boardPanel.getPlayer().getPlayerId() == playerId && playerId == 1)
+            {
+                if ( boardPanel.getPlayer().isActive() )
+                {
+                    PanelCoordinate from = boardPanel.getPanelCoordinate();
+                    PanelCoordinate to1  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 1, boardPanel.getPanelCoordinate().getCol());
+                    PanelCoordinate to2  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 1, boardPanel.getPanelCoordinate().getCol() + 1);
+                    PanelCoordinate to3  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 2, boardPanel.getPanelCoordinate().getCol() - 1);
+                    PanelCoordinate to4  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 2, boardPanel.getPanelCoordinate().getCol() + 1);
+
+                    addToMoveList(from, to1, tmpListMovements);
+                    addToMoveList(from, to2, tmpListMovements);
+                    addToMoveList(from, to3, tmpListMovements);
+                    addToMoveList(from, to4, tmpListMovements);
+
+                }
+            }
+         movementMap.put(boardPanel,tmpListMovements);
+        }
+        return movementMap;
+    }
+
+    void addToMoveList(PanelCoordinate from, PanelCoordinate to, java.util.List<MovePayLoad> movePayLoadList) {
+        if (to.getCol() >= 0 && to.getCol() <= 3 && to.getRow() <= 7 && to.getRow() >= 0) {
+
+            if (from.getRow() - to.getRow() == -1) {
+                if (checkerBoardUI.getBoardPanelByPanelCoordinate(to).getPlayer() == null || checkerBoardUI.getBoardPanelByPanelCoordinate(to).getPlayer().getPlayerId() == 0) {
+                    movePayLoadList.add(new MovePayLoad(from, to, false));
+                }
+            }
+            if (from.getRow() - to.getRow() == -2) {
+                if (checkerBoardUI.getBoardPanelByPanelCoordinate(to).getPlayer() == null || checkerBoardUI.getBoardPanelByPanelCoordinate(to).getPlayer().getPlayerId() == 0) {
+                    if (checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol())).getPlayer() != null &&
+                            checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol())).getPlayer().getPlayerId() == 2) {
+                        movePayLoadList.add(new MovePayLoad(from, to, true));
+                    }
+                }
+            }
+        }
+    }
+
 
     public boolean isJumped() {
         return jumped;

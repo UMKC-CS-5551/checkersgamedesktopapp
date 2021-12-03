@@ -2,10 +2,7 @@ package edu.umkc.group11.screen;
 
 
 import edu.umkc.group11.client.WelcomeScreen;
-import edu.umkc.group11.model.BoardPanel;
-import edu.umkc.group11.model.MovementHelper;
-import edu.umkc.group11.model.PanelCoordinate;
-import edu.umkc.group11.model.Player;
+import edu.umkc.group11.model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,6 +32,7 @@ public class CheckerBoardUI extends JPanel  {
     JLabel playerOneScoreField;
     JLabel playerTwoScoreField;
     private JButton jButtonUnfreezeBoard;
+    private JCheckBox jCheckBoxPlayer1Computer;
 
     public CheckerBoardUI(String title)
     {
@@ -52,6 +50,16 @@ public class CheckerBoardUI extends JPanel  {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 playerOneSelected = true;
                 playerTwoSelected = false;
+                if ( playerOne.isComputerized() )
+                {
+                    if ( movementHelper.getSelectedBoardPanelPlayerToMove(playerOne.getPlayerId()) != null )
+                    {
+                        MovePayLoad mpl =  movementHelper.getSelectedBoardPanelPlayerToMove(playerOne.getPlayerId());
+                        getBoardPanelByPanelCoordinate(mpl.getFrom()).getButton().doClick();
+                        getBoardPanelByPanelCoordinate(mpl.getTo()).getButton().doClick();
+                    }
+                }
+
             }
         });
         getJRadioButtonPlayer2().addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +89,13 @@ public class CheckerBoardUI extends JPanel  {
             }
         });
 
+        getJCheckBoxPlayer1Computer().addActionListener(new java.awt.event.ActionListener(){
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                playerOne.setComputerized(true);
+                getJCheckBoxPlayer1Computer().setEnabled(false);
+            }
+        });
 
         player1NoMoves.addActionListener(e ->
         {
@@ -202,6 +217,7 @@ public class CheckerBoardUI extends JPanel  {
             GridLayout gridLayout = new GridLayout();
             jTopPanel.add(getjButtonUnfreezeBoard());
             jTopPanel.add(getJRadioButtonPlayer1(), null);
+            jTopPanel.add(getJCheckBoxPlayer1Computer(), null);
             jTopPanel.add(getPlayerOneScoreField());
             jTopPanel.add(getJRadioButtonPlayer2(), null);
             jTopPanel.add(getPlayerTwoScoreField());
@@ -212,6 +228,14 @@ public class CheckerBoardUI extends JPanel  {
         return jTopPanel;
     }
 
+    public JCheckBox getJCheckBoxPlayer1Computer()
+    {
+        if ( jCheckBoxPlayer1Computer == null )
+        {
+            jCheckBoxPlayer1Computer = new JCheckBox("Player1 Computer");
+        }
+        return jCheckBoxPlayer1Computer;
+    }
     public JButton getjButtonUnfreezeBoard()
     {
         if ( jButtonUnfreezeBoard == null )

@@ -5,7 +5,8 @@ public class Player {
     private boolean active;
     private boolean king;
     private String name;
-    private  int score;
+    private int score;
+    private boolean computerized;
 
     public String getName() {
         return this.name;
@@ -26,12 +27,12 @@ public class Player {
     public Player(int playerId, boolean active) {
         this.playerId = playerId;
         this.active = active;
-        this.name = name;
+    //    this.name = name;
     }
 
     public Player(int playerId,String name) {
         this.playerId = playerId;
-        this.active = active;
+    //    this.active = active;
         this.name = name;
     }
 
@@ -58,5 +59,13 @@ public class Player {
 
     public void setKing(boolean king) {
         this.king = king;
+    }
+
+    public boolean isComputerized() {
+        return computerized;
+    }
+
+    public void setComputerized(boolean computerized) {
+        this.computerized = computerized;
     }
 }
