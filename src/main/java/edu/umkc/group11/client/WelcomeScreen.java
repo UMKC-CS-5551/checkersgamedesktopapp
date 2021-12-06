@@ -15,17 +15,20 @@ public class WelcomeScreen {
         JFrame f=new JFrame("Checkers game application");//creating instance of JFrame
         f.setBounds(10, 10, 370, 600);
         f.setTitle("Login Form");
-        JButton b=new JButton("Start Game");//creating instance of JButton
+        JButton b=new JButton("Start Game with 2 players");//creating instance of JButton
+        JButton b2=new JButton("Start Game with computer");//creating instance of JButton
         JButton exit_Button=new JButton("Exit Game");//creating instance of JButton
         JButton results_Button=new JButton("Show results");//creating instance of JButton
         JButton userHistory=new JButton("Search my scores");//creating instance of JButton
         JTextField textfieldName = new JTextField("",10);
-        b.setBounds(130,100,100, 40);//x axis, y axis, width, height
+        b.setBounds(90,100,200, 40);//x axis, y axis, width, height
+        b2.setBounds(90,150,200, 40);//x axis, y axis, width, height
         exit_Button.setBounds(130,200,100, 40);
         results_Button.setBounds(130,300,100, 40);
         userHistory.setBounds(20,400,200,40);
         textfieldName.setBounds(250,400,100,40);
         f.add(b);//adding button in JFrame
+        f.add(b2);
         f.add(exit_Button);
         f.add(results_Button);
         f.add(textfieldName);
@@ -34,11 +37,20 @@ public class WelcomeScreen {
         f.setLayout(null);//using no layout managers
         f.setVisible(true);//making the frame visible
 
+
         b.addActionListener(e ->
         {
             f.dispose();
-
             clientInformation1();
+
+        });
+
+
+        b2.addActionListener(e ->
+        {
+            f.dispose();
+            current_user = ("Computer,");
+            clientInformation2();
 
         });
 

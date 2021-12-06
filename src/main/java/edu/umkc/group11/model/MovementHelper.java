@@ -449,7 +449,7 @@ public class MovementHelper {
         return false;
     }
 
-    int theOtherPlayerId(int playerId)
+    public int theOtherPlayerId(int playerId)
     {
         if ( playerId == 1 )
         {
@@ -515,7 +515,7 @@ public class MovementHelper {
         return movementMap;
     }
 
-    void addToMoveList(PanelCoordinate from, PanelCoordinate to, java.util.List<MovePayLoad> movePayLoadList) {
+    public void addToMoveList(PanelCoordinate from, PanelCoordinate to, java.util.List<MovePayLoad> movePayLoadList) {
         if (to.getCol() >= 0 && to.getCol() <= 3 && to.getRow() <= 7 && to.getRow() >= 0) {
 
             if (from.getRow() - to.getRow() == -1) {
