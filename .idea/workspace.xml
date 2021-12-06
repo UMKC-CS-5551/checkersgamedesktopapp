@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="569301d0-6f27-4afc-8c22-4bb20bbc64d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovePayLoad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/ScoreRecord.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/ScoreRecord.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/screen/CheckerBoardUI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +40,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.WelcomeScreen">
-    <configuration name="WelcomeScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="WelcomeScreen" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.umkc.group11.client.WelcomeScreen" />
       <module name="checkers-game-desktop-app" />
       <extension name="coverage">
@@ -123,7 +118,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.WelcomeScreen" />
         <item itemvalue="JUnit.MovementHelperTest" />
         <item itemvalue="JUnit.MovementHelperTest.canNotJumpMoreTestHappyPlayerOneBecauseThereWasNoJump" />
         <item itemvalue="JUnit.MovementHelperTest.canJumpMoreTestHappyPlayerOneKing" />
@@ -146,7 +140,8 @@
       <workItem from="1637094497049" duration="3551000" />
       <workItem from="1637550348564" duration="1022000" />
       <workItem from="1638307743542" duration="1203000" />
-      <workItem from="1638415305617" duration="11029000" />
+      <workItem from="1638415305617" duration="13090000" />
+      <workItem from="1638809525186" duration="5002000" />
     </task>
     <servers />
   </component>
