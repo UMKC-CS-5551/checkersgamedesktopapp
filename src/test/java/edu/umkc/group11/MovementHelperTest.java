@@ -8,6 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -639,4 +640,177 @@ public class MovementHelperTest {
         assertFalse(checkerBoardUI.getMovementHelper().canJumpMore(new PanelCoordinate(2,2),2,false,true));
 
     }
+
+
+    /**
+     * Check if the other player number is 2 when the input player ID is 1.
+     */
+    @Test
+    public void theOtherPlayerIdTestCase1()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        int res = checkerBoardUI.getMovementHelper().theOtherPlayerId(1);
+        assertEquals(2, res);
+    }
+
+    /**
+     * Check if the other player number is 1 when the input player ID is 2.
+     */
+    @Test
+    public void theOtherPlayerIdTestCase2()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        int res = checkerBoardUI.getMovementHelper().theOtherPlayerId(2);
+        assertEquals(1, res);
+    }
+
+    /**
+     * Check if the other player number is 0 when the input player ID is invalid.
+     */
+    @Test
+    public void theOtherPlayerIdTestCase3()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        int res = checkerBoardUI.getMovementHelper().theOtherPlayerId(4);
+        assertEquals(0, res);
+    }
+
+    /**
+     * Check if the computer player's move is valid.
+     */
+    @Test
+    public void getSelectedBoardPanelPlayerToMoveTestCase1()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        boardPanel.setPlayer(new Player(1, true));
+        MovePayLoad res = checkerBoardUI.getMovementHelper().getSelectedBoardPanelPlayerToMove(1);
+
+        PanelCoordinate pc1 = new PanelCoordinate(2,1);
+        PanelCoordinate pc2 = new PanelCoordinate(3,1);
+        MovePayLoad obj = new MovePayLoad(pc1,pc2,false);
+
+        assertEquals(obj.isJump(), res.isJump());
+        assertEquals(obj.getFrom().getRow(), res.getFrom().getRow());
+        assertEquals(obj.getTo().getRow(), res.getTo().getRow());
+
+    }
+
+    /**
+     * Check if the computer player's move is valid.
+     */
+    @Test
+    public void getSelectedBoardPanelPlayerToMoveTestCase2()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        boardPanel.setPlayer(new Player(2, true));
+        MovePayLoad res = checkerBoardUI.getMovementHelper().getSelectedBoardPanelPlayerToMove(1);
+
+        PanelCoordinate pc1 = new PanelCoordinate(2,1);
+        PanelCoordinate pc2 = new PanelCoordinate(3,1);
+        MovePayLoad obj = new MovePayLoad(pc1,pc2,false);
+
+        assertEquals(obj.isJump(), res.isJump());
+        assertEquals(obj.getFrom().getRow(), res.getFrom().getRow());
+        assertEquals(obj.getTo().getRow(), res.getTo().getRow());
+
+    }
+
+    /**
+     * Check if the computer player's move is nothing for an invalid player.
+     */
+    @Test
+    public void getSelectedBoardPanelPlayerToMoveTestCase3()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        boardPanel.setPlayer(new Player(2, true));
+        MovePayLoad res = checkerBoardUI.getMovementHelper().getSelectedBoardPanelPlayerToMove(11);
+        assertEquals(null,res);
+
+    }
+
+
+    /**
+     * Check if the computer player is considering all the moves and forming a map out of them for player 1.
+     */
+    @Test
+    public void getMovementOptionsForThePlayerPanelTestCase1()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        boardPanel.setPlayer(new Player(1, true));
+        Map<BoardPanel, java.util.List<MovePayLoad>> res = checkerBoardUI.getMovementHelper().getMovementOptionsForThePlayerPanel(1);
+        assertEquals(32,res.size());
+
+    }
+
+    /**
+     * Check if the computer player is considering all the moves and forming a map out of them for player 2.
+     */
+    @Test
+    public void getMovementOptionsForThePlayerPanelTestCase2()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        boardPanel.setPlayer(new Player(2, true));
+        Map<BoardPanel, java.util.List<MovePayLoad>> res = checkerBoardUI.getMovementHelper().getMovementOptionsForThePlayerPanel(2);
+        assertEquals(32,res.size());
+
+    }
+
+
+    /**
+     * Check if the moves are added to the list which are supposed to take place without a jump for player 2.
+     */
+    @Test
+    public void addToMoveListTestCase1()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        boardPanel.setPlayer(new Player(2, true));
+        PanelCoordinate pc1 = new PanelCoordinate(2,1);
+        PanelCoordinate pc2 = new PanelCoordinate(3,1);
+        java.util.List<MovePayLoad> movePayLoadList = new ArrayList<>();
+       checkerBoardUI.getMovementHelper().addToMoveList(pc1,pc2,movePayLoadList);
+
+        MovePayLoad actual =  new MovePayLoad(pc1, pc2, false);
+        assertEquals(actual.isJump(),movePayLoadList.get(0).isJump());
+        assertEquals(actual.getTo(),movePayLoadList.get(0).getTo());
+        assertEquals(actual.getFrom(),movePayLoadList.get(0).getFrom());
+    }
+
+
+    /**
+     * Check if the moves are added to the list which are supposed to take place without a jump for player 1.
+     */
+    @Test
+    public void addToMoveListTestCase2()
+    {
+        CheckerBoardUI checkerBoardUI= new CheckerBoardUI("name1,name2");
+        BoardPanel boardPanel = new BoardPanel(checkerBoardUI, 10);
+        boardPanel.setPlayer(new Player(1, true));
+        PanelCoordinate pc1 = new PanelCoordinate(2,1);
+        PanelCoordinate pc2 = new PanelCoordinate(3,1);
+        java.util.List<MovePayLoad> movePayLoadList = new ArrayList<>();
+        checkerBoardUI.getMovementHelper().addToMoveList(pc1,pc2,movePayLoadList);
+
+        MovePayLoad actual =  new MovePayLoad(pc1, pc2, false);
+        assertEquals(actual.isJump(),movePayLoadList.get(0).isJump());
+        assertEquals(actual.getTo(),movePayLoadList.get(0).getTo());
+        assertEquals(actual.getFrom(),movePayLoadList.get(0).getFrom());
+    }
+
+
+
+
+
+
+
+
+
 }
