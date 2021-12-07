@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Stack;
 
 public class CheckerBoardUI extends JPanel  {
@@ -45,56 +44,44 @@ public class CheckerBoardUI extends JPanel  {
         getButtonGroupPlayers().add((getJRadioButtonPlayer1()));
         getButtonGroupPlayers().add(getJRadioButtonPlayer2());
 
-        getJRadioButtonPlayer1().addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                playerOneSelected = true;
-                playerTwoSelected = false;
-                if ( playerOne.isComputerized() )
+        getJRadioButtonPlayer1().addActionListener(e -> {
+            playerOneSelected = true;
+            playerTwoSelected = false;
+            if ( playerOne.isComputerized() )
+            {
+                if ( movementHelper.getSelectedBoardPanelPlayerToMove(playerOne.getPlayerId()) != null )
                 {
-                    if ( movementHelper.getSelectedBoardPanelPlayerToMove(playerOne.getPlayerId()) != null )
-                    {
-                        MovePayLoad mpl =  movementHelper.getSelectedBoardPanelPlayerToMove(playerOne.getPlayerId());
-                        getBoardPanelByPanelCoordinate(mpl.getFrom()).getButton().doClick();
-                        getBoardPanelByPanelCoordinate(mpl.getTo()).getButton().doClick();
-                    }
+                    MovePayLoad mpl =  movementHelper.getSelectedBoardPanelPlayerToMove(playerOne.getPlayerId());
+                    getBoardPanelByPanelCoordinate(mpl.getFrom()).getButton().doClick();
+                    getBoardPanelByPanelCoordinate(mpl.getTo()).getButton().doClick();
                 }
+            }
 
-            }
         });
-        getJRadioButtonPlayer2().addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                playerOneSelected = false;
-                playerTwoSelected = true;
-            }
+        getJRadioButtonPlayer2().addActionListener(e -> {
+            playerOneSelected = false;
+            playerTwoSelected = true;
         });
-        getjButtonUnfreezeBoard().addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                if ( Math.random() > 0.5 )
-                {
-                    getJRadioButtonPlayer1().setEnabled(false);
-                    getJRadioButtonPlayer2().setSelected(true);
-                    getJRadioButtonPlayer2().doClick();
-                    playerUsageStack = new Stack<>();
-                }
-                else
-                {
-                    getJRadioButtonPlayer2().setEnabled(false);
-                    getJRadioButtonPlayer1().setSelected(true);
-                    getJRadioButtonPlayer1().doClick();
-                    playerUsageStack = new Stack<>();
-                }
+        getjButtonUnfreezeBoard().addActionListener(e -> {
+            if ( Math.random() > 0.5 )
+            {
+                getJRadioButtonPlayer1().setEnabled(false);
+                getJRadioButtonPlayer2().setSelected(true);
+                getJRadioButtonPlayer2().doClick();
+                playerUsageStack = new Stack<>();
+            }
+            else
+            {
+                getJRadioButtonPlayer2().setEnabled(false);
+                getJRadioButtonPlayer1().setSelected(true);
+                getJRadioButtonPlayer1().doClick();
+                playerUsageStack = new Stack<>();
             }
         });
 
-        getJCheckBoxPlayer1Computer().addActionListener(new java.awt.event.ActionListener(){
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                playerOne.setComputerized(true);
-                getJCheckBoxPlayer1Computer().setEnabled(false);
-            }
+        getJCheckBoxPlayer1Computer().addActionListener(e -> {
+            playerOne.setComputerized(true);
+            getJCheckBoxPlayer1Computer().setEnabled(false);
         });
 
         player1NoMoves.addActionListener(e ->
@@ -117,9 +104,7 @@ public class CheckerBoardUI extends JPanel  {
             displayExitGameWindow(playerOne);
         });
         exitButton.addActionListener(e ->
-        {
-           System.exit(0);
-        });
+                System.exit(0));
 
     }
 
@@ -214,7 +199,7 @@ public class CheckerBoardUI extends JPanel  {
         if ( jTopPanel == null )
         {
             jTopPanel = new JPanel();
-            GridLayout gridLayout = new GridLayout();
+            //* GridLayout gridLayout = new GridLayout();*//
             jTopPanel.add(getjButtonUnfreezeBoard());
             jTopPanel.add(getJRadioButtonPlayer1(), null);
             jTopPanel.add(getJCheckBoxPlayer1Computer(), null);
