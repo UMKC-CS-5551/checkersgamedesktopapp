@@ -500,13 +500,15 @@ public class MovementHelper {
                     PanelCoordinate from = boardPanel.getPanelCoordinate();
                     PanelCoordinate to1  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 1, boardPanel.getPanelCoordinate().getCol());
                     PanelCoordinate to2  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 1, boardPanel.getPanelCoordinate().getCol() + 1);
-                    PanelCoordinate to3  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 2, boardPanel.getPanelCoordinate().getCol() - 1);
-                    PanelCoordinate to4  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 2, boardPanel.getPanelCoordinate().getCol() + 1);
+                    PanelCoordinate to3  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 1, boardPanel.getPanelCoordinate().getCol() - 1);
+                    PanelCoordinate to4  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 2, boardPanel.getPanelCoordinate().getCol() - 1);
+                    PanelCoordinate to5  = new PanelCoordinate(boardPanel.getPanelCoordinate().getRow() + 2, boardPanel.getPanelCoordinate().getCol() + 1);
 
                     addToMoveList(from, to1, tmpListMovements);
                     addToMoveList(from, to2, tmpListMovements);
                     addToMoveList(from, to3, tmpListMovements);
                     addToMoveList(from, to4, tmpListMovements);
+                    addToMoveList(from, to5, tmpListMovements);
 
                 }
             }
@@ -519,18 +521,46 @@ public class MovementHelper {
         if (to.getCol() >= 0 && to.getCol() <= 3 && to.getRow() <= 7 && to.getRow() >= 0) {
 
             if (from.getRow() - to.getRow() == -1) {
-                if (checkerBoardUI.getBoardPanelByPanelCoordinate(to).getPlayer() == null || checkerBoardUI.getBoardPanelByPanelCoordinate(to).getPlayer().getPlayerId() == 0) {
-                    movePayLoadList.add(new MovePayLoad(from, to, false));
-                }
-            }
-            if (from.getRow() - to.getRow() == -2) {
-                if (checkerBoardUI.getBoardPanelByPanelCoordinate(to).getPlayer() == null || checkerBoardUI.getBoardPanelByPanelCoordinate(to).getPlayer().getPlayerId() == 0) {
-                    if (checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol())).getPlayer() != null &&
-                            checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol())).getPlayer().getPlayerId() == 2) {
-                        movePayLoadList.add(new MovePayLoad(from, to, true));
+                if ( from.getCol() == to.getCol() || ((from.getCol() - to.getCol()) == 1 && from.getRow()%2==0) || ((from.getCol() - to.getCol()) == -1 && from.getRow()%2 != 0)) {
+                    if (checkerBoardUI.getBoardPanelByPanelCoordinate(to).getPlayer() == null || checkerBoardUI.getBoardPanelByPanelCoordinate(to).getPlayer().getPlayerId() == 0) {
+                        movePayLoadList.add(new MovePayLoad(from, to, false));
                     }
                 }
             }
+
+            if ( from.getRow() - to.getRow() == -2 ) {
+                if (from.getCol() - to.getCol() == 1) {
+                    if (from.getRow() % 2 == 0) {
+                        if (checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol() - 1)).getPlayer() != null &&
+                                checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol() - 1)).getPlayer().getPlayerId() == 2) {
+                            movePayLoadList.add(new MovePayLoad(from, to, true));
+
+                        }
+                    } else {
+                        if (checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol())).getPlayer() != null &&
+                                checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol())).getPlayer().getPlayerId() == 2) {
+                            movePayLoadList.add(new MovePayLoad(from, to, true));
+
+                        }
+
+                    }
+                } else if (from.getCol() - to.getCol() == -1) {
+                    if (from.getRow() % 2 == 0) {
+                        if (checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol())).getPlayer() != null &&
+                                checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol())).getPlayer().getPlayerId() == 2) {
+                            movePayLoadList.add(new MovePayLoad(from, to, true));
+                        }
+                    } else {
+                        if (checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol() + 1)).getPlayer() != null &&
+                                checkerBoardUI.getBoardPanelByPanelCoordinate(new PanelCoordinate(from.getRow() + 1, from.getCol() + 1)).getPlayer().getPlayerId() == 2) {
+                            movePayLoadList.add(new MovePayLoad(from, to, true));
+                        }
+
+                    }
+
+                }
+            }
+
         }
     }
 

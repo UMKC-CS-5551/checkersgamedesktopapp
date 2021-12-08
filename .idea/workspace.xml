@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="569301d0-6f27-4afc-8c22-4bb20bbc64d6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/GamePlayUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/GamePlayUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/ScoreRecord.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/client/ScoreRecord.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +144,7 @@
       <workItem from="1637550348564" duration="1022000" />
       <workItem from="1638307743542" duration="1203000" />
       <workItem from="1638415305617" duration="13090000" />
-      <workItem from="1638809525186" duration="5002000" />
+      <workItem from="1638809525186" duration="17335000" />
     </task>
     <servers />
   </component>
@@ -171,7 +174,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/edu/umkc/group11/MovementHelperTest.java</url>
-          <line>518</line>
+          <line>519</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -181,7 +184,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/edu/umkc/group11/MovementHelperTest.java</url>
-          <line>530</line>
+          <line>531</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -226,7 +229,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/edu/umkc/group11/MovementHelperTest.java</url>
-          <line>627</line>
+          <line>628</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -396,7 +399,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/edu/umkc/group11/model/MovementHelper.java</url>
-          <line>522</line>
+          <line>525</line>
           <option name="timeStamp" value="63" />
         </line-breakpoint>
       </breakpoints>

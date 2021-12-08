@@ -5,7 +5,6 @@ import edu.umkc.group11.screen.CheckerBoardUI;
 
 import javax.swing.*;
 
-
 public class GamePlayUtil {
     CheckerBoardUI checkerBoardUI;
     public GamePlayUtil(CheckerBoardUI checkerBoardUI)
