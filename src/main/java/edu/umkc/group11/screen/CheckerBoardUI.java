@@ -51,9 +51,22 @@ public class CheckerBoardUI extends JPanel  {
             {
                 if ( movementHelper.getSelectedBoardPanelPlayerToMove(playerOne.getPlayerId()) != null )
                 {
+<<<<<<< HEAD
                     MovePayLoad mpl =  movementHelper.getSelectedBoardPanelPlayerToMove(playerOne.getPlayerId());
                     getBoardPanelByPanelCoordinate(mpl.getFrom()).getButton().doClick();
                     getBoardPanelByPanelCoordinate(mpl.getTo()).getButton().doClick();
+=======
+                    if ( movementHelper.getSelectedBoardPanelPlayerToMove(playerOne.getPlayerId()) != null )
+                    {
+                        MovePayLoad mpl =  movementHelper.getSelectedBoardPanelPlayerToMove(playerOne.getPlayerId());
+                        getBoardPanelByPanelCoordinate(mpl.getFrom()).getButton().doClick();
+                        getBoardPanelByPanelCoordinate(mpl.getTo()).getButton().doClick();
+                    }
+                    else
+                    {
+                        player1NoMoves.doClick();
+                    }
+>>>>>>> 51d212ea9826064335594bb8f465bbcb51d7f74e
                 }
             }
 
@@ -79,11 +92,20 @@ public class CheckerBoardUI extends JPanel  {
             }
         });
 
+<<<<<<< HEAD
         getJCheckBoxPlayer1Computer().addActionListener(e -> {
             playerOne.setComputerized(true);
             getJCheckBoxPlayer1Computer().setEnabled(false);
+=======
+   /*     getJCheckBoxPlayer1Computer().addActionListener(new java.awt.event.ActionListener(){
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                playerOne.setComputerized(true);
+                getJCheckBoxPlayer1Computer().setEnabled(false);
+            }
+>>>>>>> 51d212ea9826064335594bb8f465bbcb51d7f74e
         });
-
+*/
         player1NoMoves.addActionListener(e ->
         {
             try {
@@ -120,6 +142,10 @@ public class CheckerBoardUI extends JPanel  {
         String[] player_names = playersNames.split(",");
         playerOne = new Player(1,player_names[0]);
         playerTwo = new Player(2,player_names[1]);
+        if(playerOne.getName().equals("Computer"))
+        {
+            playerOne.setComputerized(true);
+        }
     }
 
     public void displayExitGameWindow(Player playerWon)
@@ -201,8 +227,8 @@ public class CheckerBoardUI extends JPanel  {
             jTopPanel = new JPanel();
             //* GridLayout gridLayout = new GridLayout();*//
             jTopPanel.add(getjButtonUnfreezeBoard());
+          //  jTopPanel.add(getJCheckBoxPlayer1Computer(), null);
             jTopPanel.add(getJRadioButtonPlayer1(), null);
-            jTopPanel.add(getJCheckBoxPlayer1Computer(), null);
             jTopPanel.add(getPlayerOneScoreField());
             jTopPanel.add(getJRadioButtonPlayer2(), null);
             jTopPanel.add(getPlayerTwoScoreField());
@@ -213,14 +239,16 @@ public class CheckerBoardUI extends JPanel  {
         return jTopPanel;
     }
 
-    public JCheckBox getJCheckBoxPlayer1Computer()
+ /*   public JCheckBox getJCheckBoxPlayer1Computer()
     {
         if ( jCheckBoxPlayer1Computer == null )
         {
-            jCheckBoxPlayer1Computer = new JCheckBox("Player1 Computer");
+            jCheckBoxPlayer1Computer = new JCheckBox("Start Game");
         }
         return jCheckBoxPlayer1Computer;
     }
+    */
+
     public JButton getjButtonUnfreezeBoard()
     {
         if ( jButtonUnfreezeBoard == null )
